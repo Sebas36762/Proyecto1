@@ -1,4 +1,4 @@
-package Interfaces;
+package InterfacesSwing;
 
 import javax.swing.*;
 
