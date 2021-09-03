@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginP" prefHeight="400.0" prefWidth="600.0" stylesheets="@../WatingScreen/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfacesFX.LoginScreen.loginInterfaceController">
+   <children>
+      <Button fx:id="loginB" layoutX="256.0" layoutY="237.0" mnemonicParsing="false" onAction="#handle" prefHeight="25.0" prefWidth="89.0" text="Start">
+         <font>
+            <Font name="JetBrains Mono Italic" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.658823549747467" green="0.658823549747467" blue="0.658823549747467" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <TextField fx:id="loginTF" alignment="CENTER" layoutX="166.0" layoutY="161.0" prefHeight="30.0" prefWidth="269.0" promptText="Enter your username">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.658823549747467" green="0.658823549747467" blue="0.658823549747467" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
