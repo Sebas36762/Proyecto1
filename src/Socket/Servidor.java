@@ -12,8 +12,8 @@ public class Servidor {
     private Socket socketCliente;
 
     /**
-     * Crea la conexion del servidor
-     * @throws IOException Excepcion en caso de que falle la conexion.
+     * Crea la conexión del servidor
+     * @throws IOException Excepcion en caso de que falle la conexión.
      */
     public void linkS () throws IOException {
 
