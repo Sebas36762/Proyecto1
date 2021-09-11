@@ -1,6 +1,8 @@
 package Socket;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -14,9 +16,11 @@ import java.net.Socket;
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
  * Descripción:
  */
-public class Server {
+public class Server extends Thread {
     private ServerSocket socketServidor;
     private Socket socketCliente;
+    private BufferedReader listener;
+
 
     /**
      * Crea la conexión del servidor
@@ -25,5 +29,17 @@ public class Server {
     public void linkS () throws IOException {
         socketServidor = new ServerSocket(7777);
         socketCliente = socketServidor.accept();
+        this.listener = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
+    }
+
+    public void run(){
+        while(true){
+            try{
+                System.out.println(this.listener.readLine());
+            }catch(IOException e){
+                e.printStackTrace();
+                break;
+            }
+        }
     }
 }

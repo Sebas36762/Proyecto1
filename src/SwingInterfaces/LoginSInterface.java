@@ -16,6 +16,7 @@ public class LoginSInterface extends JFrame {
 
         Username = new JTextField();
         Username.setBounds(150,190,300,25);
+
         Userbutton = new JButton();
         Userbutton.setBounds(250, 230, 100, 30);
         Userbutton.setText("Star");
@@ -27,7 +28,7 @@ public class LoginSInterface extends JFrame {
         Background.add(Userbutton);
 
         Window = new JFrame();
-        Window.setTitle("Login");
+        Window.setTitle("Login2");
         Window.setVisible(true);
         Window.setLayout(null);
         Window.setSize(600,421);

@@ -1,10 +1,12 @@
 package Socket;
 
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.io.IOException;
 
-public class Cliente {
+public class Client {
     private Socket socketCliente;
+    private PrintWriter sender;
 
     /**
      * Crea la conexion de cliente.
@@ -14,5 +16,8 @@ public class Cliente {
 
         socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
+        this.sender = new PrintWriter(socketCliente.getOutputStream(), true);
+        this.sender.println("hello");
+
     }
 }

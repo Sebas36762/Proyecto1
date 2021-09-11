@@ -1,5 +1,5 @@
 import Socket.Client;
-import SwingInterfaces.LoginSInterface;
+import SwingInterfaces.LoginCInterface;
 import java.io.*;
 
 /**
@@ -21,7 +21,7 @@ public class AppClient {
      */
     public static void main(String[] args) throws IOException {
         Client Client = new Client();
-        LoginSInterface LgnW = new LoginSInterface();
+        LoginCInterface LgnCW = new LoginCInterface();
         Client.linkC();
     }
 }
