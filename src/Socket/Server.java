@@ -16,10 +16,9 @@ import java.net.Socket;
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
  * Descripción:
  */
-public class Server extends Thread {
+public class Server {
     private ServerSocket socketServidor;
     private Socket socketCliente;
-    private BufferedReader listener;
 
 
     /**
@@ -29,17 +28,7 @@ public class Server extends Thread {
     public void linkS () throws IOException {
         socketServidor = new ServerSocket(7777);
         socketCliente = socketServidor.accept();
-        this.listener = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
+        new ServerThread(socketCliente).start();
     }
 
-    public void run(){
-        while(true){
-            try{
-                System.out.println(this.listener.readLine());
-            }catch(IOException e){
-                e.printStackTrace();
-                break;
-            }
-        }
-    }
 }

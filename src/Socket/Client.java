@@ -13,11 +13,12 @@ public class Client {
      * @throws IOException Excepcion en caso de que la conexion falle.
      */
     public void linkC() throws IOException{
-
         socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
-        this.sender = new PrintWriter(socketCliente.getOutputStream(), true);
-        this.sender.println("hello");
-
+        new ClientThread(socketCliente).start();
+        sender = new PrintWriter(socketCliente.getOutputStream(), true);
+        for(int i = 0; i < 4; i ++){
+            sender.println("hello");
+        }
     }
 }
