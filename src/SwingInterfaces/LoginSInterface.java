@@ -3,11 +3,12 @@ package SwingInterfaces;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class LoginSInterface extends JFrame {
     private JLabel Background;
     private ImageIcon BGImage;
-    private JFrame Window;
+    private JFrame WindowS;
     private JTextField Username;
     private JButton Userbutton;
 
@@ -27,23 +28,30 @@ public class LoginSInterface extends JFrame {
         Background.add(Username);
         Background.add(Userbutton);
 
-        Window = new JFrame();
-        Window.setTitle("Login2");
-        Window.setVisible(true);
-        Window.setLayout(null);
-        Window.setSize(600,421);
-        Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        Window.add(Background);
-        Window.setResizable(false);
-        Window.setLocationRelativeTo(null);
+        WindowS = new JFrame();
+        WindowS.setTitle("Login2");
+        WindowS.setVisible(true);
+        WindowS.setLayout(null);
+        WindowS.setSize(600,421);
+        WindowS.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        WindowS.add(Background);
+        WindowS.setResizable(false);
+        WindowS.setLocationRelativeTo(null);
     }
 
     private class Action implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent e) {
             String Usrnm = Username.getText();
             System.out.println(Usrnm);
             if (Usrnm.equals("")) {
-                JOptionPane.showMessageDialog(Window, "Please enter your user name");
+                JOptionPane.showMessageDialog(WindowS, "Please enter your user name");
+            } else {
+                try {
+                    BoardInterface brnRunnable = new BoardInterface();
+                    WindowS.dispose();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }

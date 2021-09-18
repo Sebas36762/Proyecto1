@@ -3,9 +3,10 @@ package SwingInterfaces;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class LoginCInterface extends JFrame{
-    private JFrame CFrame;
+    private JFrame WindowC;
     private JButton Cbutton;
     private JTextField CUsername;
     private JLabel CBackground;
@@ -27,15 +28,15 @@ public class LoginCInterface extends JFrame{
         CBackground.add(CUsername);
         CBackground.add(Cbutton);
 
-        CFrame = new JFrame();
-        CFrame.setTitle("Login1");
-        CFrame.setVisible(true);
-        CFrame.setLayout(null);
-        CFrame.setSize(600, 421);
-        CFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        CFrame.add(CBackground);
-        CFrame.setResizable(false);
-        CFrame.setLocationRelativeTo(null);
+        WindowC = new JFrame();
+        WindowC.setTitle("Login1");
+        WindowC.setVisible(true);
+        WindowC.setLayout(null);
+        WindowC.setSize(600, 421);
+        WindowC.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        WindowC.add(CBackground);
+        WindowC.setResizable(false);
+        WindowC.setLocationRelativeTo(null);
 
     }
     private class Action implements ActionListener {
@@ -43,7 +44,14 @@ public class LoginCInterface extends JFrame{
             String User = CUsername.getText();
             System.out.println(User);
             if (User.equals("")) {
-                JOptionPane.showMessageDialog(CFrame, "Please enter your user name");
+                JOptionPane.showMessageDialog(WindowC, "Please enter your user name");
+            } else {
+                try {
+                    BoardInterface brnRunnable = new BoardInterface();
+                    WindowC.dispose();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
