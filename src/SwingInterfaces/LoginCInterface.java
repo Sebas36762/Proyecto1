@@ -1,5 +1,6 @@
 package SwingInterfaces;
 
+import Socket.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +12,12 @@ public class LoginCInterface extends JFrame{
     private JTextField CUsername;
     private JLabel CBackground;
     private ImageIcon CImagenicon;
+    private Client cli;
 
-    public LoginCInterface() {
+    /**
+     * Constructor que contiene los componentes y elementos de la ventana, la interfaz gráfica en sí de la misma
+     */
+    public LoginCInterface(Client client) {
         CImagenicon = new ImageIcon("fondo.jpg");
 
         CUsername = new JTextField();
@@ -29,7 +34,7 @@ public class LoginCInterface extends JFrame{
         CBackground.add(Cbutton);
 
         WindowC = new JFrame();
-        WindowC.setTitle("Login1");
+        WindowC.setTitle("Cliente");
         WindowC.setVisible(true);
         WindowC.setLayout(null);
         WindowC.setSize(600, 421);
@@ -37,6 +42,8 @@ public class LoginCInterface extends JFrame{
         WindowC.add(CBackground);
         WindowC.setResizable(false);
         WindowC.setLocationRelativeTo(null);
+
+        this.cli = client;
 
     }
     private class Action implements ActionListener {
@@ -47,7 +54,9 @@ public class LoginCInterface extends JFrame{
                 JOptionPane.showMessageDialog(WindowC, "Please enter your user name");
             } else {
                 try {
-                    BoardInterface brnRunnable = new BoardInterface();
+                    cli.sendMsg(User);
+                    BoardInterfaceClient brnRunnable = new BoardInterfaceClient();
+                    brnRunnable.getUsername(User);
                     WindowC.dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -55,4 +64,5 @@ public class LoginCInterface extends JFrame{
             }
         }
     }
+
 }

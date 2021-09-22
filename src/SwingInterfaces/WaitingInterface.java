@@ -1,9 +1,12 @@
 package SwingInterfaces;
 
+import Socket.Client;
 import Socket.Server;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class WaitingInterface extends JFrame {
@@ -38,7 +41,7 @@ public class WaitingInterface extends JFrame {
         Server Srv = new Server();
         Srv.linkS();
         Swindow.dispose();
-        LoginSInterface LgnW = new LoginSInterface();
+        LoginSInterface LgnW = new LoginSInterface(Srv);
     }
 
 }

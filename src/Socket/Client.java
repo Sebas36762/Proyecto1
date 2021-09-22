@@ -9,16 +9,30 @@ public class Client {
     private PrintWriter sender;
 
     /**
+     *
+     * @throws IOException Excepción en caso de que ocurra algún problema
+     */
+    public Client() throws IOException {
+    }
+
+    /**
      * Crea la conexion de cliente.
      * @throws IOException Excepcion en caso de que la conexion falle.
      */
     public void linkC() throws IOException{
-        socketCliente = new Socket("LocalHost", 7777);
+        this.socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
         new ClientThread(socketCliente).start();
-        sender = new PrintWriter(socketCliente.getOutputStream(), true);
-        for(int i = 0; i < 4; i ++){
-            sender.println("hello");
-        }
+        this.sender = new PrintWriter(socketCliente.getOutputStream(), true);
     }
+
+    /**
+     * Método que: - Realiza el envió de una variable tipo String
+     *
+     * @param msg Parámetro que se le da al método para que capture el mensaje a enviar
+     */
+    public void sendMsg(String msg){
+        this.sender.println(msg);
+    }
+
 }

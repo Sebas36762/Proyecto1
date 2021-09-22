@@ -1,5 +1,6 @@
 package SwingInterfaces;
 
+import Socket.Server;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +12,12 @@ public class LoginSInterface extends JFrame {
     private JFrame WindowS;
     private JTextField Username;
     private JButton Userbutton;
+    private Server server;
 
-    public LoginSInterface() {
+    /**
+     * Constructor que contiene los componentes y elementos de la ventana, la interfaz gráfica en sí de la misma
+     */
+    public LoginSInterface(Server server) {
         BGImage = new ImageIcon("fondo.jpg");
 
         Username = new JTextField();
@@ -29,7 +34,7 @@ public class LoginSInterface extends JFrame {
         Background.add(Userbutton);
 
         WindowS = new JFrame();
-        WindowS.setTitle("Login2");
+        WindowS.setTitle("Server");
         WindowS.setVisible(true);
         WindowS.setLayout(null);
         WindowS.setSize(600,421);
@@ -37,6 +42,8 @@ public class LoginSInterface extends JFrame {
         WindowS.add(Background);
         WindowS.setResizable(false);
         WindowS.setLocationRelativeTo(null);
+
+        this.server = server;
     }
 
     private class Action implements ActionListener{
@@ -47,7 +54,9 @@ public class LoginSInterface extends JFrame {
                 JOptionPane.showMessageDialog(WindowS, "Please enter your user name");
             } else {
                 try {
-                    BoardInterface brnRunnable = new BoardInterface();
+                    server.sendMsg(Usrnm);
+                    BoardInterfaceServer brnRunnable = new BoardInterfaceServer();
+                    brnRunnable.getUsername(Usrnm);
                     WindowS.dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();

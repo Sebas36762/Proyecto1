@@ -21,7 +21,7 @@ public class AppClient {
      */
     public static void main(String[] args) throws IOException {
         Client Client = new Client();
-        LoginCInterface LgnCW = new LoginCInterface();
+        LoginCInterface LgnCW = new LoginCInterface(Client);
         Client.linkC();
     }
 }

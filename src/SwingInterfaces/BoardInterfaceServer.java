@@ -1,15 +1,28 @@
 package SwingInterfaces;
 
+import Socket.ClientThread;
+import Socket.ServerThread;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+
 /**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
  *
+ * Lenguaje: Java
+ * Clase: BoardInterface
+ * @version 2.4
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene los diferentes componentes que conforman la ventana del tablero, así mismo posee
+ * la funcionalidad del movimiento de acuerdo a los dados desde el accionar del botón
  */
-public class BoardInterface extends JFrame {
+public class BoardInterfaceServer extends JFrame {
     private JFrame Bwindow;
     private JLabel Userlabel;
     private JLabel Enemylabel;
@@ -18,12 +31,15 @@ public class BoardInterface extends JFrame {
     private JButton Dicebutton;
     private JLabel Player;
     private JLabel Player2;
+    private static String name;
 
     /**
+     * Constructor que contiene los componentes y elementos de la ventana y la interfaz gráfica en sí de la misma
      *
-     * @throws IOException
+     * @throws IOException Excepción en caso de que ocurra algún problema
      */
-    public BoardInterface() throws IOException {
+    public BoardInterfaceServer() throws IOException {
+        ListNames name = ListNames.getInstance();
 
         Userlabel = new JLabel();
         Userlabel.setBounds(25, 0, 150, 50);
@@ -35,7 +51,14 @@ public class BoardInterface extends JFrame {
         Enemylabel.setBounds(25, 27, 150, 50);
         Enemylabel.setFont(new Font("default", Font.BOLD, 16));
         Enemylabel.setForeground(Color.black);
-        Enemylabel.setText("> User: ...");
+        boolean run = true;
+        while(run){
+            String Name = ServerThread.username;
+            if(Name != null){
+                Enemylabel.setText(">User: " + ServerThread.username);
+                run = false;
+            }
+        }
 
         DiceLabel = new JLabel();
         DiceLabel.setBounds(25, 625, 250, 50);
@@ -51,7 +74,7 @@ public class BoardInterface extends JFrame {
         Dicebutton = new JButton();
         Dicebutton.setBounds(575, 638, 80, 25);
         Dicebutton.setText("Dice");
-        Dicebutton.addActionListener(new BoardInterface.Action());
+        Dicebutton.addActionListener(new BoardInterfaceServer.Action());
 
         ImageIcon avatar = new ImageIcon("avatar.png");
         Player = new JLabel(avatar);
@@ -63,8 +86,7 @@ public class BoardInterface extends JFrame {
 
         Graphic g = new Graphic();
 
-        Bwindow = new JFrame();
-        Bwindow.setTitle("Board");
+        Bwindow = new JFrame("Server");
         Bwindow.setVisible(true);
 
         Bwindow.setSize(700, 720);
@@ -86,24 +108,44 @@ public class BoardInterface extends JFrame {
 
     /**
      *
-     * @param args
-     * @throws IOException
+     * @param name
      */
-    public static void main(String[] args) throws IOException{
-        BoardInterface BrdW = new BoardInterface();
+    public void getUsername(String name){
+        Userlabel.setText(">You: " + name);
     }
 
     /**
      *
+     * @param Name
      */
-    private class Action implements ActionListener{
+    public static void setEnemy(String Name){
+        name = Name;
+    }
+
+
+    public static void main(String[] args) throws IOException{
+        BoardInterfaceServer BrdW = new BoardInterfaceServer();
+    }
+
+    /**
+     * Constructor que contiene los componentes y elementos de la ventana y la interfaz gráfica en sí de la misma
+     *
+     * @throws IOException Excepción en caso de que ocurra algún problema
+     */
+    private class Action implements ActionListener {
+
+        /**
+         * Método de escucha del botón: - Contiene la funcionalidad de la relación del dado y el movimiento según sea el
+         *                                caso que se dé en la suma de los números del dado
+         *
+         * @param e Parámetro de eventos del ActionListener
+         */
         public void actionPerformed(ActionEvent e){
             Dice dice = new Dice(4);
             int shot = dice.shot();
             dice.updateLabel(Dicenumber, shot);
 
             if (Player.getY() == 107) {
-                //Player.setLocation(Player.getX(), Player.getY() +150);
                 int pos = 0;
                 while(pos < shot){
                     if(Player.getX() == 516 && pos != shot){
@@ -171,9 +213,12 @@ public class BoardInterface extends JFrame {
                     pos++;
                 }
             }
-
         }
     }
 }
+
+
+
+
 
 
