@@ -5,8 +5,8 @@ import java.net.Socket;
 import java.io.IOException;
 
 public class Client {
-    private Socket socketCliente;
-    private PrintWriter sender;
+    private static Socket socketCliente;
+    private static PrintWriter sender;
 
     /**
      *
@@ -20,10 +20,10 @@ public class Client {
      * @throws IOException Excepcion en caso de que la conexion falle.
      */
     public void linkC() throws IOException{
-        this.socketCliente = new Socket("LocalHost", 7777);
+        socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
         new ClientThread(socketCliente).start();
-        this.sender = new PrintWriter(socketCliente.getOutputStream(), true);
+        sender = new PrintWriter(socketCliente.getOutputStream(), true);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Client {
      * @param msg Parámetro que se le da al método para que capture el mensaje a enviar
      */
     public void sendMsg(String msg){
-        this.sender.println(msg);
+        sender.println(msg);
     }
 
 }

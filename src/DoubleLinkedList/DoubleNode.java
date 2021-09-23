@@ -1,43 +1,34 @@
-package linear.DoubleLinked;
+package DoubleLinkedList;
 
 public class DoubleNode {
 
     private DoubleNode prev;
     private DoubleNode next;
-    private char c;
-
-    /**
-     * Constructor with no arguments.
-     */
-    public DoubleNode(){
-        this( null, '\0', null );
-    }
-
-    /**
-     * Constructor with a character
-     * @param ch is a character for this BNode.
-     */
-    public DoubleNode(char ch){
-        this(null, ch, null);
-    }
+    private char Type;
+    private String ID;
 
     /**
      * Constructor with three arguments
      * @param p is a pointer to a previous BNode.
-     * @param ch is a character for this BNode.
+     * @param Id is a character for this BNode.
      * @param n is a pointer to a next BNode.
      */
-    public DoubleNode(DoubleNode p, char ch, DoubleNode n){
+    public DoubleNode(DoubleNode p, char Id, String Id2, DoubleNode n){
         prev = p;
         next = n;
-        c = ch;
+        Type = Id;
+        ID = Id2;
     }
 
     /**
      * @return c a character for this BNode.
      */
-    public char getC(){
-        return c;
+    public String getID(){
+        return ID;
+    }
+
+    public String getC(){
+        return String.valueOf(Type);
     }
 
     /**
@@ -58,7 +49,7 @@ public class DoubleNode {
      * @param ch is assigned to this BNode
      */
     public void setC(char ch){
-        c = ch;
+        Type = ch;
     }
 
     /**
@@ -79,6 +70,6 @@ public class DoubleNode {
      * @see java.lang.Object#toString()
      */
     public String toString(){
-        return Character.toString(c);
+        return Character.toString(Type);
     }
 }

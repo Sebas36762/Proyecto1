@@ -25,9 +25,9 @@ public class Server {
      * @throws IOException Excepcion en caso de que falle la conexión.
      */
     public void linkS () throws IOException {
-        this.socketServidor = new ServerSocket(7777);
-        this.socketCliente = socketServidor.accept();
-        this.sender = new PrintWriter(socketCliente.getOutputStream(), true);
+        socketServidor = new ServerSocket(7777);
+        socketCliente = socketServidor.accept();
+        sender = new PrintWriter(socketCliente.getOutputStream(), true);
         new ServerThread(socketCliente).start();
     }
 

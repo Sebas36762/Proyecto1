@@ -1,6 +1,7 @@
 package SwingInterfaces;
 
-import Socket.ClientThread;
+import BoardElements.Dice;
+import Socket.Server;
 import Socket.ServerThread;
 
 import javax.swing.*;
@@ -30,7 +31,9 @@ public class BoardInterfaceServer extends JFrame {
     private JLabel Dicenumber;
     private JButton Dicebutton;
     private JLabel Player;
-    private JLabel Player2;
+    private JLabel Inicio;
+    private JLabel Final;
+    private static JLabel Player2;
     private static String name;
 
     /**
@@ -122,6 +125,10 @@ public class BoardInterfaceServer extends JFrame {
         name = Name;
     }
 
+    public static void updateMove(int x, int y){
+        Player2.setBounds(x,y,50,50);
+    }
+
 
     public static void main(String[] args) throws IOException{
         BoardInterfaceServer BrdW = new BoardInterfaceServer();
@@ -141,7 +148,7 @@ public class BoardInterfaceServer extends JFrame {
          * @param e Parámetro de eventos del ActionListener
          */
         public void actionPerformed(ActionEvent e){
-            Dice dice = new Dice(4);
+            Dice dice = Dice.getInstance();
             int shot = dice.shot();
             dice.updateLabel(Dicenumber, shot);
 
@@ -213,6 +220,7 @@ public class BoardInterfaceServer extends JFrame {
                     pos++;
                 }
             }
+            Server.updateMove(Player.getX(), Player.getY());
         }
     }
 }

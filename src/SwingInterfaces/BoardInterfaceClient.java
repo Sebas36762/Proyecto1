@@ -1,5 +1,7 @@
 package SwingInterfaces;
 
+import BoardElements.Dice;
+import Socket.Client;
 import Socket.ClientThread;
 
 import javax.swing.*;
@@ -28,7 +30,7 @@ public class BoardInterfaceClient extends JFrame {
     private JLabel Dicenumber;
     private JButton Dicebutton;
     private JLabel Player;
-    private JLabel Player2;
+    private static JLabel Player2;
     private static String name;
 
     /**
@@ -115,6 +117,10 @@ public class BoardInterfaceClient extends JFrame {
         BoardInterfaceClient BrdW = new BoardInterfaceClient();
     }
 
+    public static void updateMove(int x, int y){
+        Player2.setBounds(x,y,50,50);
+    }
+
     /**
      *
      */
@@ -125,11 +131,10 @@ public class BoardInterfaceClient extends JFrame {
             dice.updateLabel(Dicenumber, shot);
 
             if (Player.getY() == 107) {
-                //Player.setLocation(Player.getX(), Player.getY() +150);
                 int pos = 0;
                 while(pos < shot){
                     if(Player.getX() == 516 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                        Player.setLocation(Player.getX()+50, Player.getY()+150);
                         pos++;
                         for(int i = pos; i < shot; i++) {
                             Player.setLocation(Player.getX()-150, Player.getY());
@@ -145,7 +150,7 @@ public class BoardInterfaceClient extends JFrame {
             } else if(Player.getY() == 257) {
                 int pos = 0;
                 while(pos < shot){
-                    if(Player.getX() == 66 && pos != shot){
+                    if(Player.getX() == 116 && pos != shot){
                         Player.setLocation(Player.getX(), Player.getY()+150);
                         pos++;
                         for(int i = pos; i < shot; i++) {
@@ -162,7 +167,7 @@ public class BoardInterfaceClient extends JFrame {
             } else if (Player.getY() == 407){
                 int pos = 0;
                 while(pos < shot){
-                    if(Player.getX() == 516 && pos != shot){
+                    if(Player.getX() == 566 && pos != shot){
                         Player.setLocation(Player.getX(), Player.getY()+150);
                         pos++;
                         for(int i = pos; i < shot; i++) {
@@ -193,6 +198,7 @@ public class BoardInterfaceClient extends JFrame {
                     pos++;
                 }
             }
+            Client.updateMove(Player.getX(), Player.getY());
 
         }
     }

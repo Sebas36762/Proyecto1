@@ -1,5 +1,6 @@
 package SwingInterfaces;
 
+import DoubleLinkedList.DoubleLinkedList;
 import Socket.Server;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +56,9 @@ public class LoginSInterface extends JFrame {
             } else {
                 try {
                     server.sendMsg(Usrnm);
+                    DoubleLinkedList list = new DoubleLinkedList();
+                    list.Casillas();
+                    Server.sendList(list);
                     BoardInterfaceServer brnRunnable = new BoardInterfaceServer();
                     brnRunnable.getUsername(Usrnm);
                     WindowS.dispose();
