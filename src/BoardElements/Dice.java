@@ -1,5 +1,4 @@
 package BoardElements;
-
 import javax.swing.*;
 
 /**
@@ -14,17 +13,20 @@ import javax.swing.*;
  * Descripción: Esta clase contiene la funcionalidad del dado
  */
 public class Dice {
+
+    /**
+     * Declaración de la variable con la cual la clase se instancia a si misma
+     * Parte del Singleton Pattern
+     */
     private static Dice Instance = new Dice();
 
     /**
-     * Constructor del dado
-     *
+     * Constructor vacío del dado
      */
     private Dice(){ }
 
     /**
-     * Método que contiene: - Funcionalidad del dado
-     *                      - Math.random para la selección de un número al azar
+     * Método que contiene la funcionalidad del dado por medio Math.random para la selección de un número al azar
      *
      * @return Retorno de un número al azar
      */
@@ -33,8 +35,8 @@ public class Dice {
     }
 
     /**
-     * Método que contiene: - El print de un número tipo entero seleccionado al azar
-     *                      - El update del label referenciado
+     * Método que contiene el print de un número tipo entero seleccionado al azar y contiene el update del label
+     * referenciado
      *
      * @param label Parámetro de referencia label que se actualiza
      * @param Numero Parámetro de tipo entero para hacer print en la actualización del label
@@ -43,7 +45,13 @@ public class Dice {
         label.setText(String.valueOf(Numero));
     }
 
-    public static Dice getInstance(){
+    /**
+     * Método por medio del cual se puede invocar la clase desde cualquier otra clase y se pude realizar el 
+     * instanciamiento de la clase
+     *
+     * @return Retorna de la variable que se utiliza para instanciar la clase en sí misma
+     */
+    public static Dice getInstance() {
         return Instance;
     }
 

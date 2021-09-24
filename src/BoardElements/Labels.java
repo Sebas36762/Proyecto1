@@ -1,7 +1,5 @@
 package BoardElements;
-
 import DoubleLinkedList.DoubleLinkedList;
-
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,5 +1,4 @@
 package SwingInterfaces;
-
 import DoubleLinkedList.DoubleLinkedList;
 
 import javax.swing.*;
@@ -7,13 +6,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: ChallengeInterface
+ * @version 1.2
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene los diferentes componentes que conforman la ventana de la casilla de reto
+ */
 public class ChallengeInterface extends JFrame {
     private JFrame Rwindow;
     private JLabel Rlabel;
     private JTextField Rtextf;
     private JButton Rbutton;
 
+    /**
+     * Constructor que contiene los componentes y elementos de la ventana de la casilla de reto, además de su interfaz gráfica
+     * en sí
+     */
     public ChallengeInterface () {
 
         Rlabel = new JLabel();
@@ -45,11 +58,25 @@ public class ChallengeInterface extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        ChallengeInterface challenge = new ChallengeInterface();
-    }
-
+    /**
+     * Instituto Tecnológico de Costa Rica
+     * Área de Ingeniería en Computadores
+     *
+     * Sub-clase: Action (Recreación de action Listener)
+     * @version 1.0
+     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     *
+     * Descripción: Esta sub-clase contiene el método que permite realizar el envío y comprobación del resultado de la
+     * operación matemática, por medio del accionar del botón
+     */
     public class Action implements ActionListener {
+
+        /**
+         * Método de escucha del botón que contiene la opción de capturar el dato ingresado (respuesta de la operación
+         * matemática), la cual a la vez es verificada
+         *
+         * @param e Parámetro de eventos del ActionListener
+         */
         public void actionPerformed(ActionEvent e) {
             String ansnumb = Rtextf.getText();
             System.out.println(ansnumb);

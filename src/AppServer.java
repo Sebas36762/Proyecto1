@@ -10,13 +10,15 @@ import SwingInterfaces.WaitingInterface;
  * Clase: AppServidor
  * @version 1.0
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
- * Descripción:
+ *
+ * Descripción: Clase que contiene el método principal para la ejecución de la aplicación del servidor
  */
 public class AppServer {
 
     /**
-     * Método main para la ejecución el código fuente
-     * @param args argumentos que se le pasan a un programa en tiempo de ejecución para modificar su funcionamiento
+     * Método para la ejecución el código fuente
+     *
+     * @param args Argumentos que se dan a un programa en tiempo de ejecución para modificar su funcionamiento
      * @throws IOException Excepción en caso de que ocurra algún problema
      */
     public static void main(String[] args) throws IOException {

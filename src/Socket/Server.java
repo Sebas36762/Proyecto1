@@ -15,10 +15,11 @@ import java.net.Socket;
  * Área de Ingeniería en Computadores
  *
  * Lenguaje: Java
- * Clase: Servidor
+ * Clase: Server
  * @version 1.0
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
- * Descripción:
+ *
+ * Descripción: Esta clase contiene el constructor del socket de servidor y establece la conexión entre los sockets
  */
 public class Server {
     private static ServerSocket socketServidor;
@@ -26,8 +27,9 @@ public class Server {
     private static PrintWriter sender;
 
     /**
-     * Crea la conexión del servidor
-     * @throws IOException Excepcion en caso de que falle la conexión.
+     * Constructor que establece la conexión entre los socket de servidor y cliente
+     *
+     * @throws IOException Excepción en caso de que ocurra algún problema
      */
     public void linkS () throws IOException {
         socketServidor = new ServerSocket(7777);
@@ -37,8 +39,9 @@ public class Server {
     }
 
     /**
+     * Método para el envío de datos tipo String
      *
-     * @param msg
+     * @param msg Parámetro que contiene le mensaje
      */
     public static void sendMsg(String msg){
         sender.println(msg);

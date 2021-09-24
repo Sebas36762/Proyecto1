@@ -1,5 +1,4 @@
 package SwingInterfaces;
-
 import BoardElements.Dice;
 import BoardElements.Labels;
 import DoubleLinkedList.DoubleLinkedList;
@@ -18,7 +17,7 @@ import java.io.IOException;
  * Área de Ingeniería en Computadores
  *
  * Lenguaje: Java
- * Clase: BoardInterface
+ * Clase: BoardInterfaceServer
  * @version 2.4
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
  *
@@ -34,7 +33,10 @@ public class BoardInterfaceServer extends JFrame {
     private static JButton Dicebutton;
     public static JLabel Player;
     private static JLabel Player2;
-    private static String name;
+    public static int casillas;
+    private JLabel CasillaType;
+    private static JLabel Caller;
+
 
     /**
      * Constructor que contiene los componentes y elementos de la ventana y la interfaz gráfica en sí de la misma
@@ -132,14 +134,14 @@ public class BoardInterfaceServer extends JFrame {
         Bwindow.add(Labels.Lb14);
 
         Bwindow.add(g);
-
     }
 
     /**
+     * Método que realiza el set de un nombre del jugador en la ventana
      *
-     * @param name
+     * @param name Parámetro que se le pasa al método para realizar el set
      */
-    public void getUsername(String name){
+    public void getUsername(String name) {
         Userlabel.setText(">You: " + name);
     }
 
@@ -478,8 +480,8 @@ public class BoardInterfaceServer extends JFrame {
     private class Action implements ActionListener {
 
         /**
-         * Método de escucha del botón: - Contiene la funcionalidad de la relación del dado y el movimiento según sea el
-         *                                caso que se dé en la suma de los números del dado
+         * Método de escucha del botón, este contiene la funcionalidad de la relación del dado y el movimiento según
+         * sea el caso que se dé en la suma de los números del dado
          *
          * @param e Parámetro de eventos del ActionListener
          */

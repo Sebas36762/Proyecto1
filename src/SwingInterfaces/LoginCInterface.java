@@ -6,6 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: LoginCInterface
+ * @version 1.0
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene los componentes de la interfaz gráfica del login de los jugadores y contiene la subclase
+ * del funcionamiento del botón
+ */
 public class LoginCInterface extends JFrame{
     private JFrame WindowC;
     private JButton Cbutton;
@@ -45,7 +57,25 @@ public class LoginCInterface extends JFrame{
         this.cli = client;
 
     }
+
+    /**
+     * Instituto Tecnológico de Costa Rica
+     * Área de Ingeniería en Computadores
+     *
+     * Sub-clase: Action (Recreación de action Listener)
+     * @version 1.0
+     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     *
+     * Descripción: Esta sub-clase contiene el método que le da el funcionamiento al botón del login
+     */
     private class Action implements ActionListener {
+
+        /**
+         * Método de escucha del botón el cual toma los datos ingresados en el text field, lanza un popup en caso de que
+         * el botón al ser activado no guarde nada ingresado en el text field y cierra la ventana de espera
+         *
+         * @param e Parámetro de eventos del ActionListener
+         */
         public void actionPerformed(ActionEvent e) {
             String User = CUsername.getText();
             System.out.println(User);

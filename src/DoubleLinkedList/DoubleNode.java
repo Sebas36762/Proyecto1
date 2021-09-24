@@ -20,10 +20,12 @@ public class DoubleNode implements Serializable {
     private String ID;
 
     /**
-     * Constructor with three arguments
-     * @param p is a pointer to a previous BNode.
-     * @param Id is a character for this BNode.
-     * @param n is a pointer to a next BNode.
+     * Constructor de cuatro argumentos
+     *
+     * @param p Parámetro que da la casilla anterior
+     * @param Id Parámetro que da el tipo de casilla
+     * @param Id2 Parámetro que da el número de casilla
+     * @param n Parámetro que da siguiente casilla
      */
     public DoubleNode(DoubleNode p, char Id, String Id2, DoubleNode n){
         prev = p;
@@ -33,53 +35,45 @@ public class DoubleNode implements Serializable {
     }
 
     /**
-     * @return c a character for this BNode.
+     * Método que optiene el número de la casilla
+     *
+     * @return Retorno del número de la casilla
      */
     public String getID(){
         return ID;
     }
 
+    /**
+     * Método que captura el tipo de casilla
+     *
+     * @return Retorno del tipo de casilla
+     */
     public String getC(){
         return String.valueOf(Type);
     }
 
     /**
-     * @return a pointer to the next BNode or null if none exists
+     * Método para apuntar a la siguiente casilla
+     *
+     * @return Retorno de un puntero a la siguiente casilla
      */
     public DoubleNode getNext(){
         return next;
     }
 
     /**
-     * @return a pointer to the previous BNode or null if none exists
-     */
-    public DoubleNode getPrev(){
-        return prev;
-    }
-
-    /**
-     * @param ch is assigned to this BNode
-     */
-    public void setC(char ch){
-        Type = ch;
-    }
-
-    /**
-     * @param n
-     */
-    public void setNext(DoubleNode n){
-        next = n;
-    }
-
-    /**
-     * @param p
+     * Método que permite apuntar a la casilla anterior
+     *
+     * @param p Parámetro que permite apuntar a la casilla anterior
      */
     public void setPrev(DoubleNode p){
         prev = p;
     }
 
     /**
-     * @see java.lang.Object#toString()
+     * Método que convierte los char a string
+     *
+     * @return Retorno de la convesion
      */
     public String toString(){
         return Character.toString(Type);

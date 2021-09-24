@@ -5,7 +5,6 @@ import BoardElements.Labels;
 import DoubleLinkedList.DoubleLinkedList;
 import Socket.Client;
 import Socket.ClientThread;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +17,7 @@ import java.io.IOException;
  * Área de Ingeniería en Computadores
  *
  * Lenguaje: Java
- * Clase: BoardInterface
+ * Clase: BoardInterfaceClient
  * @version 2.4
  * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
  *
@@ -40,8 +39,9 @@ public class BoardInterfaceClient extends JFrame {
 
 
     /**
+     * Constructor que contiene los componentes y elementos de la ventana y la interfaz gráfica en sí de la misma
      *
-     * @throws IOException
+     * @throws IOException Excepción en caso de que ocurra algún problema
      */
     public BoardInterfaceClient() throws IOException {
         Userlabel = new JLabel();
@@ -132,7 +132,6 @@ public class BoardInterfaceClient extends JFrame {
         Bwindow.add(Labels.Lb14C);
 
         Bwindow.add(g);
-
     }
 
     /**
@@ -462,11 +461,25 @@ public class BoardInterfaceClient extends JFrame {
         Client.sendMsg("No");
     }
     /**
+     * Instituto Tecnológico de Costa Rica
+     * Área de Ingeniería en Computadores
      *
+     * Sub-clase: Action (Recreación de action Listener)
+     * @version 1.0
+     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     *
+     * Descripción: Esta sub-clase contiene el método que permite la funcionalidad del botón en relación con el movimiento
      */
-    private class Action implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            Dice dice = new Dice(4);
+    private class Action implements ActionListener {
+
+        /**
+         * Método de escucha del botón que contiene la funcionalidad de la relación del dado y el movimiento según sea el
+         * caso que se dé en la suma de los números del dado
+         *
+         * @param e Parámetro de eventos del ActionListener
+         */
+        public void actionPerformed(ActionEvent e) {
+            Dice dice = Dice.getInstance();
             int shot = dice.shot();
             dice.updateLabel(Dicenumber, shot);
             casillas += shot;

@@ -1,14 +1,26 @@
 package Socket;
-
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.io.IOException;
 
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: Client
+ * @version 1.2
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene el constructor del socket de cliente y establece sus valores para realizar la conexión,
+ * además contiene el hilo que mantiene a en escucha a estos a traves de la conexión que se estableció
+ */
 public class Client {
     private static Socket socketCliente;
     private static PrintWriter sender;
 
     /**
+     * Constructor vacío
      *
      * @throws IOException Excepción en caso de que ocurra algún problema
      */
@@ -16,10 +28,12 @@ public class Client {
     }
 
     /**
-     * Crea la conexion de cliente.
-     * @throws IOException Excepcion en caso de que la conexion falle.
+     * Constructor que establece la conexión entre los sockets de cliente y servidor y permite que se mantenga a la escucha de
+     * lo que se le envíe por medio de un hilo
+     *
+     * @throws IOException Excepción en caso de que ocurra algún problema
      */
-    public void linkC() throws IOException{
+    public void linkC() throws IOException {
         socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
         new ClientThread(socketCliente).start();
@@ -27,7 +41,7 @@ public class Client {
     }
 
     /**
-     * Método que: - Realiza el envió de una variable tipo String
+     * Método que realiza el envió de una variable tipo String
      *
      * @param msg Parámetro que se le da al método para que capture el mensaje a enviar
      */

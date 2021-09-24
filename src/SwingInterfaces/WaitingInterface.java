@@ -9,12 +9,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: WaitingInterface
+ * @version 1.0
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene la ventana de espera
+ */
 public class WaitingInterface extends JFrame {
     private JLabel Sbackground;
     private ImageIcon SBGImage;
     private JFrame Swindow;
     private JLabel Slabel;
 
+    /**
+     * Constructor que contiene los componentes y elementos de la ventana
+     *
+     * @throws IOException Excepción en caso de que ocurra algún problema
+     */
     public WaitingInterface() throws IOException {
         SBGImage = new ImageIcon("fondo.jpg");
 

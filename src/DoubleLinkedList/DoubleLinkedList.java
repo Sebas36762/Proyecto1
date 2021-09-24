@@ -27,7 +27,7 @@ public class DoubleLinkedList implements Serializable {
     private int trampa = 0, tunel = 0, reto = 0;
 
     /**
-     * Constructs a new DoubleLinkedList object with head and tail as null.
+     * Constructor de un nuevo objeto "Double Linked List" con head y tail comnulos
      */
     public DoubleLinkedList() {
         head = null;
@@ -36,21 +36,21 @@ public class DoubleLinkedList implements Serializable {
     }
 
     /**
-     * Returns true if the list is empty false otherwise
-     * @return true if the list empty false otherwise
+     * Método que retorna verdadero si la lista esta vacía y falso de ser caso contrario
+     *
+     * @return Retorno de true si la lista es vacía o flase de ser caso contario
      */
     public boolean isEmpty(){
         return head == null;
     }
 
     /**
-     * Método que: - Crea las casillas de manera aleatoria.
+     * Método que crea las casillas de manera aleatoria
      */
     public void Casillas(){
         int i = 1;
         while(i <=14){
             int probability = (int)(Math.random()*3)+1;
-
             if(probability == 1 && this.trampa <4){
                 addCasilla('A', String.valueOf(i));
                 this.trampa++;
@@ -65,15 +65,15 @@ public class DoubleLinkedList implements Serializable {
                 addCasilla('T', String.valueOf(i));
                 this.tunel++;
                 i++;
-
             }
-
         }
-
     }
+
     /**
-     * Add a character BNode containing the character c to the front of the linked list. No search is required.
-     * @param Id a single character
+     * Método que crea las casillas de la lista y las va añadiendo
+     *
+     * @param Id Parámetro que permite reconocer el tipo de casilla
+     * @param ID Parámetro para reconcer el número de la casilla
      */
     public void addCasilla(char Id, String ID){
         DoubleNode casilla = new DoubleNode(null, Id, ID, head);
@@ -86,23 +86,9 @@ public class DoubleLinkedList implements Serializable {
     }
 
     /**
-     * Counts the number of BNodes in the list. We are not maintaining a counter so a search is required.
-     * @return the number of BNodes in the doubly linked list between head and tail inclusive
-     */
-    public int countBNodes(){
-        DoubleNode cn = head;
-        int count = 0;
-        while(cn != null){
-            count++;
-            cn = cn.getNext();
-        }
-        return count;
-    }
-
-    /**
-     * Returns the list as a String. The class DoubleBNode has a toString that will be called from this toString. The String returned must be presented clearly. Null pointers must be represented differently than non-null pointers.
-     * @see java.lang.Object#toString()
-     * @return a String containing the characters in the list
+     * Método que permite realizar un print de la lista creada
+     *
+     * @return Retorno de la lista creada
      */
     public String showList(){
         DoubleNode cn = head;
@@ -112,15 +98,20 @@ public class DoubleLinkedList implements Serializable {
             //System.out.print(cn.getC());
             cn = cn.getNext();
         }
-        String[] list = str.split(",");
-
+        String list = str;
         return list;
     }
 
-    public static String findNode(String Id){
+    /**
+     * Método que busca un nodo dado por medio del parámetro
+     *
+     * @param Id Parámetro para permite acceder a un determinado nodo
+     * @return Retorno null
+     */
+    public static String findNode(String Id) {
         DoubleNode objective = head;
         while (objective != null){
-            if (objective.getID().equals(Id)){
+            if (objective.getID().equals(Id)) {
                 return objective.getC();
             }else{
                 objective = objective.getNext();
@@ -129,10 +120,13 @@ public class DoubleLinkedList implements Serializable {
         return null;
     }
 
+    /**
+     * Método que realiza la creación de una operación matemática aleatorea
+     *
+     * @return Retorno de la variable "format" que contiene el formato de la operación aleatorea
+     */
     public static String Mathchallenge() {
-
         Random r = new Random();
-
         int A = (int) (Math.random()*50+1);
         int B = (int) (Math.random()*50+1);
         char operator ='?';
@@ -153,14 +147,11 @@ public class DoubleLinkedList implements Serializable {
                 break;
             default: operator = '?';
         }
-
-        System.out.print(A);
-        System.out.print(" ");
-        System.out.print(operator);
-        System.out.print(" ");
-        System.out.print(B);
-
-
+//        System.out.print(A);
+//        System.out.print(" ");
+//        System.out.print(operator);
+//        System.out.print(" ");
+//        System.out.print(B);
         values = (String.valueOf(value));
         String format = (String.valueOf(A)+" "+String.valueOf(operator)+" "+String.valueOf(B));
         return format;
