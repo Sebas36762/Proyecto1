@@ -35,4 +35,19 @@ public class Client {
         sender.println(msg);
     }
 
+    /**
+     * Método que envía las coordenadas del jugador al servidor después de realizar un movimiento
+     *
+     * @param X Coordenada en X del jugador
+     * @param Y Coordenada en Y del jugador
+     */
+    public static void updateMove(int X, int Y){
+            sender.println(String.valueOf(X) + "," + String.valueOf(Y));
+
+    }
 }
+
+
+
+
+

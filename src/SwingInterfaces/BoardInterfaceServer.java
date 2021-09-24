@@ -46,13 +46,13 @@ public class BoardInterfaceServer extends JFrame {
         Userlabel = new JLabel();
         Userlabel.setBounds(25, 0, 150, 50);
         Userlabel.setFont(new Font("default", Font.BOLD, 16));
-        Userlabel.setForeground(Color.black);
+        Userlabel.setForeground(Color.blue);
         Userlabel.setText("> You: ...");
 
         Enemylabel = new JLabel();
         Enemylabel.setBounds(25, 27, 150, 50);
         Enemylabel.setFont(new Font("default", Font.BOLD, 16));
-        Enemylabel.setForeground(Color.black);
+        Enemylabel.setForeground(Color.red);
         boolean run = true;
         while(run){
             String Name = ServerThread.username;

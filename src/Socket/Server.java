@@ -1,7 +1,11 @@
 package Socket;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import DoubleLinkedList.DoubleLinkedList;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -17,9 +21,9 @@ import java.net.Socket;
  * Descripción:
  */
 public class Server {
-    private ServerSocket socketServidor;
-    private Socket socketCliente;
-    private PrintWriter sender;
+    private static ServerSocket socketServidor;
+    private static Socket socketCliente;
+    private static PrintWriter sender;
 
     /**
      * Crea la conexión del servidor
@@ -39,5 +43,27 @@ public class Server {
     public static void sendMsg(String msg){
         sender.println(msg);
     }
+
+    /**
+     * Método que envía las coordenadas del jugador al cliente cuando se realiza un movimiento
+     *
+     * @param X Coordenada en X del jugador.
+     * @param Y Coordenada en Y del jugador.
+     */
+    public static void updateMove(int X, int Y){
+        sender.println(String.valueOf(X) + "," + String.valueOf(Y));
+    }
+
+    /**
+     *  Método para el envío de la lista creada
+     *
+     * @param list Parámetro que contiene la lista
+     * @throws IOException Excepción en caso de que ocurra algún problema
+     */
+    public static void sendList(String list) throws IOException{
+        sender.println(list);
+    }
+
+
 
 }

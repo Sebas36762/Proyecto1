@@ -1,7 +1,25 @@
 package DoubleLinkedList;
+import Socket.Client;
+import Socket.Server;
+import SwingInterfaces.BoardInterfaceClient;
+import SwingInterfaces.BoardInterfaceServer;
+import javax.swing.*;
+import java.io.Serializable;
 import java.util.*;
 
-public class DoubleLinkedList {
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: DoubleLinkedList
+ * @version 3.0
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene algunos de los métodos que se utilizan en la lista doblemente enlazada, principalmente
+ * en los movimientos y los casos de las casillas
+ */
+public class DoubleLinkedList implements Serializable {
 
     public static String values;
     private static DoubleNode head;
