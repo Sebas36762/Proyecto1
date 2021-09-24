@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class LoginSInterface extends JFrame {
     private JLabel Background;
@@ -57,8 +58,8 @@ public class LoginSInterface extends JFrame {
                 try {
                     server.sendMsg(Usrnm);
                     DoubleLinkedList list = new DoubleLinkedList();
-                    list.Casillas();
-                    Server.sendList(list);
+                    String List = list.showList();
+                    Server.sendList(List);
                     BoardInterfaceServer brnRunnable = new BoardInterfaceServer();
                     brnRunnable.getUsername(Usrnm);
                     WindowS.dispose();

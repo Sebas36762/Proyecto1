@@ -31,7 +31,7 @@ public class Client {
      *
      * @param msg Parámetro que se le da al método para que capture el mensaje a enviar
      */
-    public void sendMsg(String msg){
+    public static void sendMsg(String msg){
         sender.println(msg);
     }
 

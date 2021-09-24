@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
 /**
  * Instituto Tecnológico de Costa Rica
  * Área de Ingeniería en Computadores
@@ -35,8 +36,8 @@ public class Server {
      *
      * @param msg
      */
-    public void sendMsg(String msg){
-        this.sender.println(msg);
+    public static void sendMsg(String msg){
+        sender.println(msg);
     }
 
 }

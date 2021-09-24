@@ -1,6 +1,18 @@
 package DoubleLinkedList;
+import java.io.Serializable;
 
-public class DoubleNode {
+/**
+ * Instituto Tecnológico de Costa Rica
+ * Área de Ingeniería en Computadores
+ *
+ * Lenguaje: Java
+ * Clase: DoubleNode
+ * @version 1.0
+ * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ *
+ * Descripción: Esta clase contiene algunos de los métodos que se utilizan en la lista doblemente enlazada
+ */
+public class DoubleNode implements Serializable {
 
     private DoubleNode prev;
     private DoubleNode next;

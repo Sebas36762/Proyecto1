@@ -14,6 +14,7 @@ public class DoubleLinkedList {
     public DoubleLinkedList() {
         head = null;
         tail = null;
+        Casillas();
     }
 
     /**
@@ -85,12 +86,12 @@ public class DoubleLinkedList {
      * @see java.lang.Object#toString()
      * @return a String containing the characters in the list
      */
-    public String[] showList(){
+    public String showList(){
         DoubleNode cn = head;
         String str = "";
         while(cn != null){
             str += cn.getC() + ",";
-            System.out.print(cn.getC());
+            //System.out.print(cn.getC());
             cn = cn.getNext();
         }
         String[] list = str.split(",");
@@ -147,13 +148,222 @@ public class DoubleLinkedList {
         return format;
     }
 
-    public static void main(String[] args) {
-        DoubleLinkedList x = new DoubleLinkedList();
-        x.Casillas();
+    /**
+     * Método que contiene la funcionalidad de la casilla de tunel, asignado su movimiento de manera aleatoria
+     *
+     * @param Player Parámetro del jugador
+     */
+    public static void Tunel(JLabel Player, String player){
 
-        System.out.println(Arrays.toString(x.showList()));
-        System.out.println(x.findNode("4"));
+        int move = (int)(Math.random()*3)+1;
+        if(player.equals("Server")){
+            BoardInterfaceServer.casillas += move;
+        }else{
+            BoardInterfaceClient.casillas +=move;
+        }
+
+        if (Player.getY() == 107) {
+            int pos = 0;
+            while(pos < move){
+                if(Player.getX() == 516 && pos != move){
+                    if(player.equals("Server")){
+                        Player.setLocation(Player.getX(), Player.getY()+150);
+                        pos++;
+                        for(int i = pos; i < move; i++) {
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+                        pos++;
+                        break;
+
+                    }else{
+                        Player.setLocation(Player.getX()+50, Player.getY()+150);
+                        pos++;
+                        for(int i = pos; i < move; i++) {
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+                        pos++;
+                        break;
+                    }
+                }
+                Player.setLocation(Player.getX()+150, Player.getY());
+                pos++;
+            }
+
+        } else if(Player.getY() == 257) {
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 66 && pos != move)||(Player.getX() == 116 && pos != move)){
+                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    pos++;
+                    for(int i = pos; i < move; i++) {
+                        Player.setLocation(Player.getX()+150, Player.getY());
+                        pos++;
+                    }
+                    pos++;
+                    break;
+                }
+                Player.setLocation(Player.getX()-150, Player.getY());
+                pos++;
+            }
+
+        } else if (Player.getY() == 407){
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 516 && pos != move)||(Player.getX() == 566 && pos != move)){
+                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    pos++;
+                    for(int i = pos; i < move; i++) {
+                        Player.setLocation(Player.getX()-150, Player.getY());
+                        pos++;
+                    }
+                    pos++;
+                    break;
+                }
+                Player.setLocation(Player.getX()+150, Player.getY());
+                pos++;
+            }
+
+        } else if (Player.getY() == 557) {
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){
+                    break;
+                }
+                Player.setLocation(Player.getX()-150, Player.getY());
+                pos++;
+            }
+        }
+        if(player.equals("Server")){
+            Server.sendMsg("No");
+            Server.updateMove(Player.getX(), Player.getY());
+            Server.sendMsg("go");
+            BoardInterfaceServer.checkPos(BoardInterfaceServer.casillas);
+        }else{
+            Client.sendMsg("No");
+            Client.updateMove(Player.getX(), Player.getY());
+            Client.sendMsg("go");
+            BoardInterfaceClient.checkPos(BoardInterfaceClient.casillas);
+        }
     }
+
+    /**
+     * Método que contiene la funcionalidad y el movimiento de la casilla de trampa
+     *
+     * @param Player Parámetro del jugador
+     */
+    public static void Trap(JLabel Player, String player){
+        int move = (int)(Math.random()*3)+1;
+        boolean flag = true;
+        System.out.println("Trap rest: " + move);
+
+        if(player.equals("Server")){
+            if(BoardInterfaceServer.casillas - move < 0){
+                Player.setLocation(66, Player.getY());
+            }else{
+                BoardInterfaceServer.casillas -= move;
+            }
+        }else{
+            if(BoardInterfaceClient.casillas - move < 0){
+                Player.setLocation(66, Player.getY());
+            }else{
+                BoardInterfaceClient.casillas -= move;
+            }
+
+        }
+
+        if (Player.getY() == 107) {
+            int pos = 0;
+            while(pos < move){
+                if(Player.getX() == 66){
+                    break;
+                }
+                Player.setLocation(Player.getX()-150, Player.getY());
+                pos++;
+            }
+            if(Player.getX() < 66){
+                Player.setLocation(66,Player.getY());
+            }
+
+        } else if(Player.getY() == 257) {
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 516 && pos != move) || (Player.getX() == 566 && pos != move)){
+
+                    if(player.equals("Server")){
+                        Player.setLocation(Player.getX(), Player.getY()-150);
+                        pos++;
+                        for(int i = pos; i < move; i++) {
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+                        pos++;
+                        break;
+
+                    }else{
+                        Player.setLocation(Player.getX()-50, Player.getY()-150);
+                        pos++;
+                        for(int i = pos; i < move; i++) {
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+                        pos++;
+                        break;
+                    }
+                }
+                Player.setLocation(Player.getX()+150, Player.getY());
+                pos++;
+            }
+
+        } else if (Player.getY() == 407){
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 66 && pos != move) || (Player.getX() == 116 && pos != move)){
+                    Player.setLocation(Player.getX(), Player.getY()-150);
+                    pos++;
+                    for(int i = pos; i < move; i++) {
+                        Player.setLocation(Player.getX()+150, Player.getY());
+                        pos++;
+                    }
+                    pos++;
+                    break;
+                }
+                Player.setLocation(Player.getX()-150, Player.getY());
+                pos++;
+            }
+
+        } else if (Player.getY() == 557) {
+            int pos = 0;
+            while(pos < move){
+                if((Player.getX() == 516 && pos != move) || (Player.getX() == 556 && pos != move)){
+                    Player.setLocation(Player.getX(), Player.getY()-150);
+                    pos++;
+                    for(int i = pos; i < move; i++) {
+                        Player.setLocation(Player.getX()-150, Player.getY());
+                        pos++;
+                    }
+                    pos++;
+                    break;
+                }
+                Player.setLocation(Player.getX()+150, Player.getY());
+                pos++;
+            }
+        }
+        if(player.equals("Server")){
+            Server.sendMsg("No");
+            Server.updateMove(Player.getX(), Player.getY());
+            Server.sendMsg("go");
+            BoardInterfaceServer.checkPos(BoardInterfaceServer.casillas);
+
+        }else{
+            Client.sendMsg("No");
+            Client.updateMove(Player.getX(), Player.getY());
+            Client.sendMsg("go");
+            BoardInterfaceClient.checkPos(BoardInterfaceClient.casillas);
+        }
+    }
+
 }
 
 

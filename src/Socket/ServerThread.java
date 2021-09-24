@@ -16,22 +16,35 @@ public class ServerThread extends Thread{
 
     public void run(){
         try{
-            String msg = null;
             BufferedReader listener = new BufferedReader(new InputStreamReader(sc.getInputStream()));
             username = listener.readLine();
+            boolean running = true;
+            while(running){
+                if(listener.readLine().equals("Ready")){
+                    String Chg = listener.readLine();
+                    if (Chg.equals("Chg")){
+                        BoardInterfaceServer.move(1);
+                    }
+                }else{
+                    String msg = listener.readLine();
+                    String[] Name = msg.split(",");
+                    X = Integer.parseInt(Name[0]);
+                    Y = Integer.parseInt(Name[1]);
+                    BoardInterfaceServer.updateMove(X, Y);
 
-            while((msg = listener.readLine()) != null){
-                username = msg;
-                System.out.println("Client says: " + msg);
+                    String Turn = listener.readLine();
+                    BoardInterfaceServer.serverTurn(Turn);
 
-                String[] Name = msg.split(",");
-                X = Integer.parseInt(Name[0]);
-                Y = Integer.parseInt(Name[1]);
-                BoardInterfaceServer.updateMove(X, Y);
+                }
+
             }
             sc.close();
         }catch (IOException e){
-            e.printStackTrace();
+            try {
+                sc.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

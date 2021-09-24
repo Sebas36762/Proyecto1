@@ -14,7 +14,6 @@ public class ChallengeInterface extends JFrame {
     private JTextField Rtextf;
     private JButton Rbutton;
 
-
     public ChallengeInterface () {
 
         Rlabel = new JLabel();
@@ -58,13 +57,12 @@ public class ChallengeInterface extends JFrame {
                 JOptionPane.showMessageDialog(Rwindow, "Please answer the challenge");
             } else {
                 if (ansnumb.equals(DoubleLinkedList.values)) {
-                    System.out.println("YES");
                     Rwindow.dispose();
                 } else {
-                    System.out.println("NO");
                     Rwindow.dispose();
                 }
             }
         }
     }
+
 }

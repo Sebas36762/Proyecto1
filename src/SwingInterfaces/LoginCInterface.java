@@ -41,7 +41,6 @@ public class LoginCInterface extends JFrame{
         WindowC.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         WindowC.add(CBackground);
         WindowC.setResizable(false);
-        WindowC.setLocationRelativeTo(null);
 
         this.cli = client;
 
