@@ -25,7 +25,7 @@ import java.io.IOException;
  * la funcionalidad del movimiento de acuerdo a los dados desde el accionar del botón
  */
 public class BoardInterfaceClient extends JFrame {
-    private JFrame Bwindow;
+    private static JFrame Bwindow;
     private JLabel Userlabel;
     private JLabel Enemylabel;
     private JLabel DiceLabel;
@@ -393,6 +393,12 @@ public class BoardInterfaceClient extends JFrame {
 
 
     }
+
+    /**
+     * Método que da el movimiento de la casilla de reto
+     *
+     * @param cant Parámetro que le da el valor de la cantidad de casillas en las que se tiene que mover
+     */
     public static void move(int cant){
         casillas+=1;
         if (Player.getY() == 107) {
@@ -455,11 +461,14 @@ public class BoardInterfaceClient extends JFrame {
                 Player.setLocation(Player.getX()-150, Player.getY());
                 pos++;
             }
+        }if(Player.getX() == 116 && Player.getY() == 557){
+            BoardInterfaceServer.gameOver();
+            Bwindow.dispose();
         }
-        Client.sendMsg("No");
+        Client.sendMsg("Move");
         Client.updateMove(Player.getX(), Player.getY());
-        Client.sendMsg("No");
     }
+
     /**
      * Instituto Tecnológico de Costa Rica
      * Área de Ingeniería en Computadores
@@ -483,78 +492,82 @@ public class BoardInterfaceClient extends JFrame {
             int shot = dice.shot();
             dice.updateLabel(Dicenumber, shot);
             casillas += shot;
-
             if (Player.getY() == 107) {
                 int pos = 0;
-                while(pos < shot){
-                    if(Player.getX() == 516 && pos != shot){
-                        Player.setLocation(Player.getX()+50, Player.getY()+150);
+                while (pos < shot) {
+                    if (Player.getX() == 516 && pos != shot) {
+                        Player.setLocation(Player.getX() + 50, Player.getY() + 150);
                         pos++;
-                        for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                        for (int i = pos; i < shot; i++) {
+                            Player.setLocation(Player.getX() - 150, Player.getY());
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()+150, Player.getY());
+                    Player.setLocation(Player.getX() + 150, Player.getY());
                     pos++;
                 }
-
-            } else if(Player.getY() == 257) {
+            } else if (Player.getY() == 257) {
                 int pos = 0;
-                while(pos < shot){
-                    if(Player.getX() == 116 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                while (pos < shot) {
+                    if (Player.getX() == 116 && pos != shot) {
+                        Player.setLocation(Player.getX(), Player.getY() + 150);
                         pos++;
-                        for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()+150, Player.getY());
+                        for (int i = pos; i < shot; i++) {
+                            Player.setLocation(Player.getX() + 150, Player.getY());
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()-150, Player.getY());
+                    Player.setLocation(Player.getX() - 150, Player.getY());
                     pos++;
                 }
-
-            } else if (Player.getY() == 407){
+            } else if (Player.getY() == 407) {
                 int pos = 0;
-                while(pos < shot){
-                    if(Player.getX() == 566 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                while (pos < shot) {
+                    if (Player.getX() == 566 && pos != shot) {
+                        Player.setLocation(Player.getX(), Player.getY() + 150);
                         pos++;
-                        for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                        for (int i = pos; i < shot; i++) {
+                            Player.setLocation(Player.getX() - 150, Player.getY());
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()+150, Player.getY());
+                    Player.setLocation(Player.getX() + 150, Player.getY());
                     pos++;
                 }
-
             } else if (Player.getY() == 557) {
                 int pos = 0;
-                while(pos < shot){
-                    if(Player.getX() == 116 && Player.getY() == 557){
+                while (pos < shot) {
+                    if (Player.getX() == 116 && Player.getY() == 557) {
+                        BoardInterfaceServer.gameOver();
+                        Bwindow.dispose();
                         break;
                     }
-                    Player.setLocation(Player.getX()-150, Player.getY());
+                    Player.setLocation(Player.getX() - 150, Player.getY());
                     pos++;
                 }
-            }
-            Client.sendMsg("No");
-            //Actualización de movimiento
-            Client.updateMove(Player.getX(), Player.getY());
 
+            }if(Player.getX() == 66 && Player.getY() == 557){
+                BoardInterfaceServer.gameOver();
+                Bwindow.dispose();
+            }
+            //Actualización de movimiento
+            Client.sendMsg("Move");
+            Client.updateMove(Player.getX(), Player.getY());
             //Cambio de turno
+            Client.sendMsg("Turn");
             Client.sendMsg("go");
             Dicebutton.setVisible(false);
             checkPos(casillas);
         }
     }
 }
+
+
 
 

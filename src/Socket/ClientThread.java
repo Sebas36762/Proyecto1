@@ -1,6 +1,8 @@
 package Socket;
 import BoardElements.Labels;
 import SwingInterfaces.BoardInterfaceClient;
+import SwingInterfaces.ChallengeInterface;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -48,25 +50,30 @@ public class ClientThread extends Thread{
 
             boolean running = true;
             while(running){
-                if(listener.readLine().equals("Ready")){
+                String msg = listener.readLine();
+                if(msg.equals("Ready")){
                     String Challenge = listener.readLine();
                     if(Challenge.equals("Chg")){
                         BoardInterfaceClient.move(1);
                     }
 
-                }else{
+                }else if (msg.equals("Move")){ //Actualizacion del movimiento del jugador
                     String serverMsg = listener.readLine();
                     String[] Name = serverMsg.split(",");
                     X = Integer.parseInt(Name[0]);
                     Y = Integer.parseInt(Name[1]);
                     BoardInterfaceClient.updateMove(X, Y);
 
+                }else if (msg.equals("Turn")){
                     String Turn = listener.readLine();
                     BoardInterfaceClient.clientTurn(Turn);
 
+                }else if (msg.equals("Verify")){
+                    String verify = listener.readLine();
+                    String[] params = verify.split(",");
+                    ChallengeInterface Chg = new ChallengeInterface(params[0], params[1]);
+
                 }
-
-
             }
 
         }catch (IOException e){

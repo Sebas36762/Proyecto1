@@ -147,11 +147,6 @@ public class DoubleLinkedList implements Serializable {
                 break;
             default: operator = '?';
         }
-//        System.out.print(A);
-//        System.out.print(" ");
-//        System.out.print(operator);
-//        System.out.print(" ");
-//        System.out.print(B);
         values = (String.valueOf(value));
         String format = (String.valueOf(A)+" "+String.valueOf(operator)+" "+String.valueOf(B));
         return format;
@@ -165,6 +160,7 @@ public class DoubleLinkedList implements Serializable {
     public static void Tunel(JLabel Player, String player){
 
         int move = (int)(Math.random()*3)+1;
+        System.out.println("Tunel move: " + move);
         if(player.equals("Server")){
             BoardInterfaceServer.casillas += move;
         }else{
@@ -238,20 +234,28 @@ public class DoubleLinkedList implements Serializable {
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){
+                    BoardInterfaceServer.gameOver();
                     break;
                 }
                 Player.setLocation(Player.getX()-150, Player.getY());
                 pos++;
             }
+
+        }if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){
+            BoardInterfaceServer.gameOver();
         }
+
         if(player.equals("Server")){
-            Server.sendMsg("No");
+            Server.sendMsg("Move");
             Server.updateMove(Player.getX(), Player.getY());
+            Server.sendMsg("Turn");
             Server.sendMsg("go");
             BoardInterfaceServer.checkPos(BoardInterfaceServer.casillas);
+
         }else{
-            Client.sendMsg("No");
+            Client.sendMsg("Move");
             Client.updateMove(Player.getX(), Player.getY());
+            Client.sendMsg("Turn");
             Client.sendMsg("go");
             BoardInterfaceClient.checkPos(BoardInterfaceClient.casillas);
         }
@@ -360,14 +364,20 @@ public class DoubleLinkedList implements Serializable {
             }
         }
         if(player.equals("Server")){
-            Server.sendMsg("No");
+            //Actualiza el movimiento del jugador
+            Server.sendMsg("Move");
             Server.updateMove(Player.getX(), Player.getY());
+            //Cambio de turno
+            Server.sendMsg("Turn");
             Server.sendMsg("go");
             BoardInterfaceServer.checkPos(BoardInterfaceServer.casillas);
 
         }else{
-            Client.sendMsg("No");
+            //Actualiza el movimiento del jugador
+            Client.sendMsg("Move");
             Client.updateMove(Player.getX(), Player.getY());
+            //Cambio de turno
+            Client.sendMsg("Turn");
             Client.sendMsg("go");
             BoardInterfaceClient.checkPos(BoardInterfaceClient.casillas);
         }

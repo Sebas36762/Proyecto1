@@ -1,6 +1,8 @@
 package Socket;
 
 import SwingInterfaces.BoardInterfaceServer;
+import SwingInterfaces.ChallengeInterface;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -40,22 +42,30 @@ public class ServerThread extends Thread{
             username = listener.readLine();
             boolean running = true;
             while(running){
-                if(listener.readLine().equals("Ready")){
+                String msg = listener.readLine();
+
+                if(msg.equals("Ready")){
                     String Chg = listener.readLine();
                     if (Chg.equals("Chg")){
                         BoardInterfaceServer.move(1);
                     }
-                }else{
-                    String msg = listener.readLine();
-                    String[] Name = msg.split(",");
+                }else if (msg.equals("Move")){
+                    String Clientmsg = listener.readLine();
+                    String[] Name = Clientmsg.split(",");
                     X = Integer.parseInt(Name[0]);
                     Y = Integer.parseInt(Name[1]);
                     BoardInterfaceServer.updateMove(X, Y);
 
+                }else if (msg.equals("Turn")){
                     String Turn = listener.readLine();
                     BoardInterfaceServer.serverTurn(Turn);
 
+                }else if (msg.equals("Verify")){
+                    String verify = listener.readLine();
+                    String[] params = verify.split(",");
+                    ChallengeInterface chg = new ChallengeInterface(params[0], params[1]);
                 }
+
 
             }
             sc.close();

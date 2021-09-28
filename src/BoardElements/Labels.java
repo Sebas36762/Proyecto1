@@ -121,6 +121,23 @@ public class Labels {
         Lb14.setText(DoubleLinkedList.findNode("14"));
         Lb14.setBounds(260,518,100,100);
         Lb14.setFont(new Font("default", Font.BOLD, 20));
+
+        StackLabels stack = new StackLabels();
+        StackLabels.push(Lb14);
+        StackLabels.push(Lb13);
+        StackLabels.push(Lb12);
+        StackLabels.push(Lb11);
+        StackLabels.push(Lb10);
+        StackLabels.push(Lb9);
+        StackLabels.push(Lb8);
+        StackLabels.push(Lb7);
+        StackLabels.push(Lb6);
+        StackLabels.push(Lb5);
+        StackLabels.push(Lb4);
+        StackLabels.push(Lb3);
+        StackLabels.push(Lb2);
+        StackLabels.push(Lb1);
+
     }
 
     /**

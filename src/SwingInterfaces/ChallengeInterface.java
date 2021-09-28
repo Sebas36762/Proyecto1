@@ -21,13 +21,15 @@ public class ChallengeInterface extends JFrame {
     private JFrame Rwindow;
     private JLabel Rlabel;
     private JTextField Rtextf;
-    private JButton Rbutton;
+    private JButton Rbutton, Extbutton;
+    private String player;
+    private JLabel Player;
 
     /**
      * Constructor que contiene los componentes y elementos de la ventana de la casilla de reto, además de su interfaz gráfica
      * en sí
      */
-    public ChallengeInterface () {
+    public ChallengeInterface (String Player, JLabel player) {
 
         Rlabel = new JLabel();
         Rlabel.setBounds(83,3,100,100);
@@ -86,6 +88,96 @@ public class ChallengeInterface extends JFrame {
                 if (ansnumb.equals(DoubleLinkedList.values)) {
                     Rwindow.dispose();
                 } else {
+                    int move = 1;
+                    if (Player.getY() == 107) {
+                        int pos = 0;
+                        while(pos < move){
+                            if(Player.getX() == 66){
+                                break;
+                            }
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+                        if(Player.getX() < 66){
+                            Player.setLocation(66,Player.getY());
+                        }
+
+                    } else if(Player.getY() == 257) {
+                        int pos = 0;
+                        while(pos < move){
+                            if((Player.getX() == 516 && pos != move) || (Player.getX() == 566 && pos != move)){
+
+                                if(player.equals("Server")){
+                                    Player.setLocation(Player.getX(), Player.getY()-150);
+                                    pos++;
+                                    for(int i = pos; i < move; i++) {
+                                        Player.setLocation(Player.getX()-150, Player.getY());
+                                        pos++;
+                                    }
+                                    pos++;
+                                    break;
+
+                                }else{
+                                    Player.setLocation(Player.getX()-50, Player.getY()-150);
+                                    pos++;
+                                    for(int i = pos; i < move; i++) {
+                                        Player.setLocation(Player.getX()-150, Player.getY());
+                                        pos++;
+                                    }
+                                    pos++;
+                                    break;
+                                }
+                            }
+                            Player.setLocation(Player.getX()+150, Player.getY());
+                            pos++;
+                        }
+
+                    } else if (Player.getY() == 407){
+                        int pos = 0;
+                        while(pos < move){
+                            if((Player.getX() == 66 && pos != move) || (Player.getX() == 116 && pos != move)){
+                                Player.setLocation(Player.getX(), Player.getY()-150);
+                                pos++;
+                                for(int i = pos; i < move; i++) {
+                                    Player.setLocation(Player.getX()+150, Player.getY());
+                                    pos++;
+                                }
+                                pos++;
+                                break;
+                            }
+                            Player.setLocation(Player.getX()-150, Player.getY());
+                            pos++;
+                        }
+
+                    } else if (Player.getY() == 557) {
+                        int pos = 0;
+                        while(pos < move){
+                            if((Player.getX() == 516 && pos != move) || (Player.getX() == 556 && pos != move)){
+                                Player.setLocation(Player.getX(), Player.getY()-150);
+                                pos++;
+                                for(int i = pos; i < move; i++) {
+                                    Player.setLocation(Player.getX()-150, Player.getY());
+                                    pos++;
+                                }
+                                pos++;
+                                break;
+                            }
+                            Player.setLocation(Player.getX()+150, Player.getY());
+                            pos++;
+                        }
+                    }
+                    if(player.equals("Server")){
+                        Server.sendMsg("Move");
+                        Server.updateMove(Player.getX(), Player.getY());
+                        Server.sendMsg("Verify");
+                        Server.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
+
+                    }else{
+                        Client.sendMsg("Move");
+                        Client.updateMove(Player.getX(), Player.getY());
+                        Client.sendMsg("Verify");
+                        Client.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
+                    }
                     Rwindow.dispose();
                 }
             }

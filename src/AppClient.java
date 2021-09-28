@@ -1,4 +1,5 @@
 import Socket.Client;
+import SwingInterfaces.BoardInterfaceServer;
 import SwingInterfaces.LoginCInterface;
 import java.io.*;
 
