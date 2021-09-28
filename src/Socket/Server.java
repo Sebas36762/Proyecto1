@@ -63,10 +63,7 @@ public class Server {
      * @param list Parámetro que contiene la lista
      * @throws IOException Excepción en caso de que ocurra algún problema
      */
-    public static void sendList(String list) throws IOException{
+    public static void sendList(String list) throws IOException {
         sender.println(list);
     }
-
-
-
 }

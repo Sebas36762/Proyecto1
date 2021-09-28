@@ -104,7 +104,7 @@ public class BoardInterfaceServer extends JFrame {
         Bwindow.setVisible(true);
 
         Bwindow.setSize(700, 720);
-        Bwindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Bwindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Bwindow.setResizable(false);
         Bwindow.setLocationRelativeTo(null);
 
@@ -634,4 +634,5 @@ public class BoardInterfaceServer extends JFrame {
             checkPos(casillas);
         }
     }
+
 }

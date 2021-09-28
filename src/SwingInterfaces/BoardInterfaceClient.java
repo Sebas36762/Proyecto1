@@ -1,5 +1,4 @@
 package SwingInterfaces;
-
 import BoardElements.Dice;
 import BoardElements.Labels;
 import DoubleLinkedList.DoubleLinkedList;
@@ -10,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 
 /**
  * Instituto Tecnológico de Costa Rica
@@ -37,7 +35,6 @@ public class BoardInterfaceClient extends JFrame {
     private JLabel CasillaType;
     private static JLabel Caller;
 
-
     /**
      * Constructor que contiene los componentes y elementos de la ventana y la interfaz gráfica en sí de la misma
      *
@@ -55,9 +52,9 @@ public class BoardInterfaceClient extends JFrame {
         Enemylabel.setFont(new Font("default", Font.BOLD, 16));
         Enemylabel.setForeground(Color.red);
         boolean run = true;
-        while(run){
+        while (run) {
             String Name = ClientThread.Name;
-            if(Name != null){
+            if (Name != null) {
                 Enemylabel.setText(">User: " + ClientThread.Name);
                 run = false;
             }
@@ -82,20 +79,20 @@ public class BoardInterfaceClient extends JFrame {
 
         CasillaType = new JLabel();
         CasillaType.setText("R = Reto | T = Trampa | A = Tunel");
-        CasillaType.setBounds(200,0, 400,50);
+        CasillaType.setBounds(200, 0, 400, 50);
         CasillaType.setFont(new Font("default", Font.BOLD, 20));
 
         Caller = new JLabel();
-        Caller.setBounds(310, 35,100,50);
+        Caller.setBounds(310, 35, 100, 50);
         Caller.setFont(new Font("default", Font.BOLD, 16));
 
         ImageIcon avatar = new ImageIcon("avatar.png");
         Player = new JLabel(avatar);
-        Player.setBounds(66,107,50,50);
+        Player.setBounds(66, 107, 50, 50);
 
         ImageIcon avatar2 = new ImageIcon("aavatar.png");
         Player2 = new JLabel(avatar2);
-        Player2.setBounds(115,107,50,50);
+        Player2.setBounds(115, 107, 50, 50);
 
         Graphic g = new Graphic();
 
@@ -139,7 +136,7 @@ public class BoardInterfaceClient extends JFrame {
      *
      * @param name Parámetro que se le pasa al método para realizar el set
      */
-    public void getUsername(String name){
+    public void getUsername(String name) {
         Userlabel.setText(">You: " + name);
     }
 
@@ -148,8 +145,8 @@ public class BoardInterfaceClient extends JFrame {
      *
      * @param turn Parámetro que determina cuando es el turno del jugador para habilitar el botón.
      */
-    public static void clientTurn(String turn){
-        if(turn.equals("go")){
+    public static void clientTurn(String turn) {
+        if (turn.equals("go")) {
             Dicebutton.setVisible(true);
         }
     }
@@ -160,233 +157,238 @@ public class BoardInterfaceClient extends JFrame {
      * @param x Coordenada en X del jugador 2
      * @param y Coordenada en Y del jugador 2
      */
-    public static void updateMove(int x, int y){
-        Player2.setBounds(x,y,50,50);
+    public static void updateMove(int x, int y) {
+        Player2.setBounds(x, y, 50, 50);
     }
 
-    public static void checkPos(int pos){
+    /**
+     * Método para verificar la posición del jugador y revisar la casilla
+     *
+     * @param pos Parámetro que le pasa la posición (el número de casilla) para su chequeo
+     */
+    public static void checkPos(int pos) {
         System.out.println("Check " + String.valueOf(pos));
-        if(pos == 1){
-            if((Labels.Lb1C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        if (pos == 1) {
+            if ((Labels.Lb1C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb1C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb1C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb1C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb1C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 2){
-            if((Labels.Lb2C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 2) {
+            if ((Labels.Lb2C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb2C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb2C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb2C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb2C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 3){
-            if((Labels.Lb3C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 3) {
+            if ((Labels.Lb3C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb3C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb3C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb3C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb3C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 4){
-            if((Labels.Lb4C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 4) {
+            if ((Labels.Lb4C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb4C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb4C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb4C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb4C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 5){
-            if((Labels.Lb5C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 5) {
+            if ((Labels.Lb5C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb5C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb5C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb5C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb5C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 6){
-            if((Labels.Lb6C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 6) {
+            if ((Labels.Lb6C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb6C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb6C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb6C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb6C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 7){
-            if((Labels.Lb7C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 7) {
+            if ((Labels.Lb7C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb7C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb7C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb7C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb7C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 8){
-            if((Labels.Lb8C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 8) {
+            if ((Labels.Lb8C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb8C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb8C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb8C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb8C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 9){
-            if((Labels.Lb9C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 9) {
+            if ((Labels.Lb9C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb9C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb9C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb9C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb9C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 10){
-            if((Labels.Lb10C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 10) {
+            if ((Labels.Lb10C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb10C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb10C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb10C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb10C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 11){
-            if((Labels.Lb11C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 11) {
+            if ((Labels.Lb11C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb11C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb11C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb11C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb11C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 12){
-            if((Labels.Lb12C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 12) {
+            if ((Labels.Lb12C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb12C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb12C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb12C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb12C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 13){
-            if((Labels.Lb13C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 13) {
+            if ((Labels.Lb13C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb13C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb13C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb13C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb13C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
 
-        }else if(pos == 14){
-            if((Labels.Lb14C).getText().equals("R")){
-                ChallengeInterface vent = new ChallengeInterface();
+        } else if (pos == 14) {
+            if ((Labels.Lb14C).getText().equals("R")) {
+                ChallengeInterface vent = new ChallengeInterface("Client", Player);
                 Caller.setText("Reto!");
                 Client.sendMsg("Ready");
                 Client.sendMsg("Chg");
 
-            }else if((Labels.Lb14C).getText().equals("T")){
-                DoubleLinkedList.Trap(Player,"Client");
+            } else if ((Labels.Lb14C).getText().equals("T")) {
+                DoubleLinkedList.Trap(Player, "Client");
                 Caller.setText("Trampa!");
 
-            }else if ((Labels.Lb14C).getText().equals("A")){
-                DoubleLinkedList.Tunel(Player,"Client");
+            } else if ((Labels.Lb14C).getText().equals("A")) {
+                DoubleLinkedList.Tunel(Player, "Client");
                 Caller.setText("Tunel!");
             }
         }
@@ -398,65 +400,67 @@ public class BoardInterfaceClient extends JFrame {
      * @param cant Parámetro que le da el valor de la cantidad de casillas en las que se tiene que mover
      */
     public static void move(int cant){
-        casillas+=1;
+        casillas += 1;
         if (Player.getY() == 107) {
             int pos = 0;
-            while(pos < cant){
-                if(Player.getX() == 516 && pos != cant){
-                    Player.setLocation(Player.getX()+50, Player.getY()+150);
+            while (pos < cant) {
+                if (Player.getX() == 516 && pos != cant) {
+                    Player.setLocation(Player.getX() + 50, Player.getY() + 150);
                     pos++;
-                    for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                    for (int i = pos; i < cant; i++) {
+                        Player.setLocation(Player.getX() - 150, Player.getY());
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX() + 150, Player.getY());
                 pos++;
             }
 
-        } else if(Player.getY() == 257) {
+        } else if (Player.getY() == 257) {
             int pos = 0;
-            while(pos < cant){
-                if(Player.getX() == 116 && pos != cant){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+            while (pos < cant) {
+                if (Player.getX() == 116 && pos != cant) {
+                    Player.setLocation(Player.getX(), Player.getY() + 150);
                     pos++;
-                    for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()+150, Player.getY());
+                    for (int i = pos; i < cant; i++) {
+                        Player.setLocation(Player.getX() + 150, Player.getY());
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX() - 150, Player.getY());
                 pos++;
             }
 
-        } else if (Player.getY() == 407){
+        } else if (Player.getY() == 407) {
             int pos = 0;
-            while(pos < cant){
-                if(Player.getX() == 566 && pos != cant){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+            while (pos < cant) {
+                if (Player.getX() == 566 && pos != cant) {
+                    Player.setLocation(Player.getX(), Player.getY() + 150);
                     pos++;
-                    for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                    for (int i = pos; i < cant; i++) {
+                        Player.setLocation(Player.getX() - 150, Player.getY());
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX() + 150, Player.getY());
                 pos++;
             }
 
         } else if (Player.getY() == 557) {
             int pos = 0;
-            while(pos < cant){
-                if(Player.getX() == 116 && Player.getY() == 557){
+            while (pos < cant) {
+                if (Player.getX() == 116 && Player.getY() == 557) {
+                    BoardInterfaceServer.gameOver();
+                    Bwindow.dispose();
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX() - 150, Player.getY());
                 pos++;
             }
         }if(Player.getX() == 116 && Player.getY() == 557){
