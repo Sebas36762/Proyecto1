@@ -390,8 +390,6 @@ public class BoardInterfaceClient extends JFrame {
                 Caller.setText("Tunel!");
             }
         }
-
-
     }
 
     /**
