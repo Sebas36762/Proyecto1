@@ -39,7 +39,7 @@ public class LoginCInterface extends JFrame{
 
         Cbutton = new JButton();
         Cbutton.setBounds(250, 230, 100, 30);
-        Cbutton.setText("Star");
+        Cbutton.setText("Start");
         Cbutton.addActionListener(new Action());
 
         CBackground = new JLabel(CImagenicon);

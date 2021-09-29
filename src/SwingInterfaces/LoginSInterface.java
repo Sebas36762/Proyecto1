@@ -41,7 +41,7 @@ public class LoginSInterface extends JFrame {
 
         Userbutton = new JButton();
         Userbutton.setBounds(250, 230, 100, 30);
-        Userbutton.setText("Star");
+        Userbutton.setText("Start");
         Userbutton.addActionListener(new Action());
 
         Background = new JLabel(BGImage);
