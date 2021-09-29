@@ -25,6 +25,7 @@ class Graphic extends JPanel {
 
         super.paint(graphics);
 
+        //Cuadros y líneas de las casilla de las ventanas
         graphics.setColor(Color.BLACK);
         graphics.drawRect(65,83,100,100);
         graphics.drawLine(165,133,215, 133); //

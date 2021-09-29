@@ -41,17 +41,17 @@ public class ClientThread extends Thread{
      */
     public void run(){
         try{
-            BufferedReader listener = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-            Name = listener.readLine();
+            BufferedReader listener = new BufferedReader(new InputStreamReader(sc.getInputStream())); //Puente que recibe datos
+            Name = listener.readLine(); //Guarda el nombre del Servidor
 
             String list = listener.readLine();
-            List = list.split(",");
+            List = list.split(","); //Guarda la lista de casillas y crea los Labels
             Labels.LabelsClient(List);
 
             boolean running = true;
             while(running){
-                String msg = listener.readLine();
-                if(msg.equals("Ready")){
+                String msg = listener.readLine(); //Mensaje recibido del Servidor
+                if(msg.equals("Ready")){ //Dato recibido para ejecutar el movimiento al salir un reto
                     String Challenge = listener.readLine();
                     if(Challenge.equals("Chg")){
                         BoardInterfaceClient.move(1);
@@ -64,11 +64,11 @@ public class ClientThread extends Thread{
                     Y = Integer.parseInt(Name[1]);
                     BoardInterfaceClient.updateMove(X, Y);
 
-                }else if (msg.equals("Turn")){
+                }else if (msg.equals("Turn")){ //Cambio de turno
                     String Turn = listener.readLine();
                     BoardInterfaceClient.clientTurn(Turn);
 
-                }else if (msg.equals("Verify")){
+                }else if (msg.equals("Verify")){ //Lanza la ventana con la verificación del reto
                     String verify = listener.readLine();
                     String[] params = verify.split(",");
                     ChallengeInterface Chg = new ChallengeInterface(params[0], params[1]);

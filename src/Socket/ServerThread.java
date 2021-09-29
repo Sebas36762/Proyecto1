@@ -39,28 +39,28 @@ public class ServerThread extends Thread{
     public void run(){
         try{
             BufferedReader listener = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-            username = listener.readLine();
+            username = listener.readLine(); //Guarda el nombre del cliente
             boolean running = true;
             while(running){
-                String msg = listener.readLine();
+                String msg = listener.readLine(); //Mensaje recibido del cliente
 
-                if(msg.equals("Ready")){
+                if(msg.equals("Ready")){ //Dato recibido para ejecutar el movimiento al salir un reto
                     String Chg = listener.readLine();
                     if (Chg.equals("Chg")){
                         BoardInterfaceServer.move(1);
                     }
-                }else if (msg.equals("Move")){
+                }else if (msg.equals("Move")){ //Actualización del movimiento
                     String Clientmsg = listener.readLine();
                     String[] Name = Clientmsg.split(",");
                     X = Integer.parseInt(Name[0]);
                     Y = Integer.parseInt(Name[1]);
                     BoardInterfaceServer.updateMove(X, Y);
 
-                }else if (msg.equals("Turn")){
+                }else if (msg.equals("Turn")){ //Cambio de turno
                     String Turn = listener.readLine();
                     BoardInterfaceServer.serverTurn(Turn);
 
-                }else if (msg.equals("Verify")){
+                }else if (msg.equals("Verify")){ //Lanza la ventana con la verificación del reto
                     String verify = listener.readLine();
                     String[] params = verify.split(",");
                     ChallengeInterface chg = new ChallengeInterface(params[0], params[1]);

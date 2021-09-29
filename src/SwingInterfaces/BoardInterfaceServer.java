@@ -46,6 +46,7 @@ public class BoardInterfaceServer extends JFrame {
      */
     public BoardInterfaceServer() throws IOException {
 
+        //Creación y agregación de elementos a la ventana
         Userlabel = new JLabel();
         Userlabel.setBounds(25, 0, 150, 50);
         Userlabel.setFont(new Font("default", Font.BOLD, 16));
@@ -194,6 +195,8 @@ public class BoardInterfaceServer extends JFrame {
      */
     public static void checkPos(int pos){
         System.out.println("Check " + String.valueOf(pos));
+
+        //Verifica que contiene las casillas del tablero
         if(pos == 1){
             if((Labels.Lb1).getText().equals("R")){
                 ChallengeInterface vent = new ChallengeInterface("Server", Player);
@@ -427,69 +430,69 @@ public class BoardInterfaceServer extends JFrame {
      */
     public static void move(int cant){
         casillas+=1;
-        if (Player.getY() == 107) {
+        if (Player.getY() == 107) { //Primera fila del tablero
             int pos = 0;
             while(pos < cant){
                 if(Player.getX() == 516 && pos != cant){
-                    Player.setLocation(Player.getX()+50, Player.getY()+150);
+                    Player.setLocation(Player.getX()+50, Player.getY()+150); //Movimiento hacia la segunda fila del tablero
                     pos++;
                     for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                        Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la segunda fila
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la primera fila
                 pos++;
             }
 
-        } else if(Player.getY() == 257) {
+        } else if(Player.getY() == 257) { //Segunda fila del tablero
             int pos = 0;
             while(pos < cant){
                 if(Player.getX() == 116 && pos != cant){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento hacia la tercera fila del tablero
                     pos++;
                     for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()+150, Player.getY());
+                        Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la tercera fila
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la segunda fila
                 pos++;
             }
 
-        } else if (Player.getY() == 407){
+        } else if (Player.getY() == 407){ //Tercera fila del tablero
             int pos = 0;
             while(pos < cant){
                 if(Player.getX() == 566 && pos != cant){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento hacia la cuarta fila del tablero
                     pos++;
                     for(int i = pos; i < cant; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                        Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la cuarta fila
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la tercera fila
                 pos++;
             }
 
-        } else if (Player.getY() == 557) {
+        } else if (Player.getY() == 557) { //Cuarta fila del tablero
             int pos = 0;
             while(pos < cant){
-                if(Player.getX() == 116 && Player.getY() == 557){
+                if(Player.getX() == 116 && Player.getY() == 557){ //Jugador llegó a la última casilla del tablero
                     gameOver();
                     Bwindow.dispose();
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la cuarta fila
                 pos++;
             }
-        }if(Player.getX() == 66 && Player.getY() == 557){
+        }if(Player.getX() == 66 && Player.getY() == 557){ //Jugador llegó a la última casilla del tablero
             gameOver();
             Bwindow.dispose();
         }
@@ -556,70 +559,69 @@ public class BoardInterfaceServer extends JFrame {
             dice.updateLabel(Dicenumber, shot);
             casillas = casillas + shot;
 
-            if (Player.getY() == 107) {
+            if (Player.getY() == 107) { //Primera fila del tablero
                 int pos = 0;
                 while(pos < shot){
                     if(Player.getX() == 516 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                        Player.setLocation(Player.getX()+50, Player.getY()+150); //Movimiento hacia la segunda fila del tablero
                         pos++;
                         for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                            Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la segunda fila
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()+150, Player.getY());
+                    Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la primera fila
                     pos++;
                 }
 
-            } else if(Player.getY() == 257) {
+            } else if(Player.getY() == 257) { //Segunda fila del tablero
                 int pos = 0;
                 while(pos < shot){
-                    if(Player.getX() == 66 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                    if(Player.getX() == 116 && pos != shot){
+                        Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento hacia la tercera fila del tablero
                         pos++;
                         for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()+150, Player.getY());
+                            Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la tercera fila
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()-150, Player.getY());
+                    Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la segunda fila
                     pos++;
                 }
 
-            } else if (Player.getY() == 407){
+            } else if (Player.getY() == 407){ //Tercera fila del tablero
                 int pos = 0;
                 while(pos < shot){
-                    if(Player.getX() == 516 && pos != shot){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                    if(Player.getX() == 566 && pos != shot){
+                        Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento hacia la cuarta fila del tablero
                         pos++;
                         for(int i = pos; i < shot; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                            Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la cuarta fila
                             pos++;
                         }
                         pos++;
                         break;
                     }
-                    Player.setLocation(Player.getX()+150, Player.getY());
+                    Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento hacia la derecha en la tercera fila
                     pos++;
                 }
 
-            } else if (Player.getY() == 557) {
+            } else if (Player.getY() == 557) { //Cuarta fila del tablero
                 int pos = 0;
                 while(pos < shot){
-                    if(Player.getX() == 66 && Player.getY() == 557){
+                    if(Player.getX() == 116 && Player.getY() == 557){ //Jugador llegó a la última casilla del tablero
                         gameOver();
                         Bwindow.dispose();
                         break;
                     }
-                    Player.setLocation(Player.getX()-150, Player.getY());
+                    Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento hacia la izquierda en la cuarta fila
                     pos++;
                 }
-
-            }if(Player.getX() == 66 && Player.getY() == 557){
+            }if(Player.getX() == 66 && Player.getY() == 557){ //Jugador llegó a la última casilla del tablero
                 gameOver();
                 Bwindow.dispose();
             }

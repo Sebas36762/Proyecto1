@@ -34,6 +34,7 @@ public class ChallengeInterface extends JFrame {
      */
     public ChallengeInterface (String Player, JLabel player) {
 
+        //Creación y agregación de elementos a la ventana
         Rlabel = new JLabel();
         Rlabel.setBounds(83,3,100,100);
         Rlabel.setFont(new Font("default",Font.BOLD,16));
@@ -74,6 +75,7 @@ public class ChallengeInterface extends JFrame {
      */
     public ChallengeInterface (String resultado, String respuesta) {
 
+        //Creación y agregación de elementos a la ventana
         Rsltlabel = new JLabel();
         Rsltlabel.setBounds(18,15,300,100);
         Rsltlabel.setFont(new Font("default",Font.BOLD,16));
@@ -137,15 +139,20 @@ public class ChallengeInterface extends JFrame {
             } else {
                 if (ansnumb.equals(DoubleLinkedList.values)) {
                     if (player.equals("Server")){
+
+                        //Mensaje para lanzar verificación del reto
                         Server.sendMsg("Verify");
                         Server.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
 
                     }else{
+
+                        //Mensaje para lanzar verificación del reto
                         Client.sendMsg("Verify");
                         Client.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
                     }
                     Rwindow.dispose();
                 } else {
+                    //Movimiento hacia atrás al fallar el reto
                     int move = 1;
                     if (Player.getY() == 107) {
                         int pos = 0;
@@ -225,14 +232,18 @@ public class ChallengeInterface extends JFrame {
                         }
                     }
                     if(player.equals("Server")){
+                        //Actualización del movimiento
                         Server.sendMsg("Move");
                         Server.updateMove(Player.getX(), Player.getY());
+                        //Mensaje para lanzar la ventana de verificación
                         Server.sendMsg("Verify");
                         Server.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
 
                     }else{
+                        //Actualización del movimiento
                         Client.sendMsg("Move");
                         Client.updateMove(Player.getX(), Player.getY());
+                        //Mensaje para lanzar la ventana de verificación
                         Client.sendMsg("Verify");
                         Client.sendMsg(DoubleLinkedList.values+","+Rtextf.getText());
                     }

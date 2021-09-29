@@ -30,6 +30,8 @@ public class LoginCInterface extends JFrame{
      * Constructor que contiene los componentes y elementos de la ventana, la interfaz gráfica en sí de la misma
      */
     public LoginCInterface(Client client) {
+
+        //Creación y agregación de elementos a la ventana
         CImagenicon = new ImageIcon("fondo.jpg");
 
         CUsername = new JTextField();
@@ -77,15 +79,15 @@ public class LoginCInterface extends JFrame{
          * @param e Parámetro de eventos del ActionListener
          */
         public void actionPerformed(ActionEvent e) {
-            String User = CUsername.getText();
+            String User = CUsername.getText(); //Nombre del cliente
             System.out.println(User);
             if (User.equals("")) {
                 JOptionPane.showMessageDialog(WindowC, "Please enter your user name");
             } else {
                 try {
-                    cli.sendMsg(User);
+                    cli.sendMsg(User); //Envío de nombre del cliente a servidor
                     BoardInterfaceClient brnRunnable = new BoardInterfaceClient();
-                    brnRunnable.getUsername(User);
+                    brnRunnable.getUsername(User); //Pasa el nombre de cliente al tablero
                     WindowC.dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();

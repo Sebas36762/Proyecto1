@@ -27,7 +27,7 @@ public class DoubleLinkedList implements Serializable {
     private int trampa = 0, tunel = 0, reto = 0;
 
     /**
-     * Constructor de un nuevo objeto "Double Linked List" con head y tail comnulos
+     * Constructor de un nuevo objeto "Double Linked List" con head y tail como nulos
      */
     public DoubleLinkedList() {
         head = null;
@@ -50,18 +50,18 @@ public class DoubleLinkedList implements Serializable {
     public void Casillas(){
         int i = 1;
         while(i <=14){
-            int probability = (int)(Math.random()*3)+1;
-            if(probability == 1 && this.trampa <4){
+            int probability = (int)(Math.random()*3)+1; //Probabilidad random de crear las casillas
+            if(probability == 1 && this.trampa <4){ //Casilla de trampa
                 addCasilla('A', String.valueOf(i));
                 this.trampa++;
                 i++;
 
-            }else if(probability == 2 && this.reto <7){
+            }else if(probability == 2 && this.reto <7){ //Casilla de reto
                 addCasilla('R', String.valueOf(i));
                 this.reto++;
                 i++;
 
-            }else if (probability == 3 && this.tunel <3){
+            }else if (probability == 3 && this.tunel <3){ //Casilla de tunel
                 addCasilla('T', String.valueOf(i));
                 this.tunel++;
                 i++;
@@ -95,7 +95,6 @@ public class DoubleLinkedList implements Serializable {
         String str = "";
         while(cn != null){
             str += cn.getC() + ",";
-            //System.out.print(cn.getC());
             cn = cn.getNext();
         }
         String list = str;
@@ -111,13 +110,13 @@ public class DoubleLinkedList implements Serializable {
     public static String findNode(String Id) {
         DoubleNode objective = head;
         while (objective != null){
-            if (objective.getID().equals(Id)) {
+            if (objective.getID().equals(Id)) { //Se cumple si se encuentra el nodo en la lista
                 return objective.getC();
             }else{
                 objective = objective.getNext();
             }
         }
-        return null;
+        return null; //No se encontró el nodo en la lista
     }
 
     /**
@@ -127,12 +126,12 @@ public class DoubleLinkedList implements Serializable {
      */
     public static String Mathchallenge() {
         Random r = new Random();
-        int A = (int) (Math.random()*50+1);
-        int B = (int) (Math.random()*50+1);
-        char operator ='?';
+        int A = (int) (Math.random()*50+1); //Primer operando para el reto
+        int B = (int) (Math.random()*50+1); //Segundo operando del reto
+        char operator = 'a';
         int value = 0;
 
-        switch (r.nextInt(4)){
+        switch (r.nextInt(3)){
             case 0: operator = '+';
                 value = A+B;
                 break;
@@ -145,36 +144,38 @@ public class DoubleLinkedList implements Serializable {
             case 3: operator = '/';
                 value = A/B;
                 break;
-            default: operator = '?';
         }
         values = (String.valueOf(value));
-        String format = (String.valueOf(A)+" "+String.valueOf(operator)+" "+String.valueOf(B));
+        String format = (String.valueOf(A)+" "+String.valueOf(operator)+" "+String.valueOf(B)); //Expresión total del reto con valores random
         return format;
     }
 
     /**
      * Método que contiene la funcionalidad de la casilla de tunel, asignado su movimiento de manera aleatoria
      *
-     * @param Player Parámetro del jugador
+     * @param Player Parámetro que pasa el Label del jugador para su actualización
+     * @param player Parámetro que define que jugador llamó al método
      */
     public static void Tunel(JLabel Player, String player){
 
-        int move = (int)(Math.random()*3)+1;
+        int move = (int)(Math.random()*3)+1; //Cantidad de casillas a moverse, de 1 a 3
         System.out.println("Tunel move: " + move);
+
+        //Aumento en el contador de casillas de Clinte o Servidor
         if(player.equals("Server")){
             BoardInterfaceServer.casillas += move;
         }else{
             BoardInterfaceClient.casillas +=move;
         }
 
-        if (Player.getY() == 107) {
+        if (Player.getY() == 107) { //Primera fila del tablero
             int pos = 0;
             while(pos < move){
                 if(Player.getX() == 516 && pos != move){
                     if(player.equals("Server")){
-                        Player.setLocation(Player.getX(), Player.getY()+150);
+                        Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento hacia la segunda fila del tablero
                         pos++;
-                        for(int i = pos; i < move; i++) {
+                        for(int i = pos; i < move; i++) { //Movimiento hacia la izquierda en segunda fila
                             Player.setLocation(Player.getX()-150, Player.getY());
                             pos++;
                         }
@@ -182,9 +183,9 @@ public class DoubleLinkedList implements Serializable {
                         break;
 
                     }else{
-                        Player.setLocation(Player.getX()+50, Player.getY()+150);
+                        Player.setLocation(Player.getX()+50, Player.getY()+150); //Movimiento hacia la segunda fila del tablero
                         pos++;
-                        for(int i = pos; i < move; i++) {
+                        for(int i = pos; i < move; i++) { //Movimiento hacia la izquierda en segunda fila
                             Player.setLocation(Player.getX()-150, Player.getY());
                             pos++;
                         }
@@ -196,56 +197,57 @@ public class DoubleLinkedList implements Serializable {
                 pos++;
             }
 
-        } else if(Player.getY() == 257) {
+        } else if(Player.getY() == 257) { //Segunda fila del tablero
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 66 && pos != move)||(Player.getX() == 116 && pos != move)){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento a la tercera fila
                     pos++;
                     for(int i = pos; i < move; i++) {
-                        Player.setLocation(Player.getX()+150, Player.getY());
+                        Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento a la derecha en la tercera fila del tablero
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento a la izquierda en la segunda fila del tablero
                 pos++;
             }
 
-        } else if (Player.getY() == 407){
+        } else if (Player.getY() == 407){ //Tercera fila del tablero
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 516 && pos != move)||(Player.getX() == 566 && pos != move)){
-                    Player.setLocation(Player.getX(), Player.getY()+150);
+                    Player.setLocation(Player.getX(), Player.getY()+150); //Movimiento a la cuarta fila del tablero
                     pos++;
                     for(int i = pos; i < move; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                        Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento a la izquierda en la cuarta fila del tablero
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento a la derecha en la tercera fila del tablero
                 pos++;
             }
 
-        } else if (Player.getY() == 557) {
+        } else if (Player.getY() == 557) { //Cuarta fila del tablero
             int pos = 0;
             while(pos < move){
-                if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){
+                if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){ //Jugador llegó a la última casilla del tablero
                     BoardInterfaceServer.gameOver();
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimeinto a la izquierda en la cuarta fila del tablero
                 pos++;
             }
 
-        }if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){
+        }if((Player.getX() == 66 && Player.getY() == 557)||(Player.getX() == 116 && Player.getY() == 557)){ //Jugador llegó a la última casilla del tablero
             BoardInterfaceServer.gameOver();
         }
 
         if(player.equals("Server")){
+            //Aviso al Cliente para acutalizar movimiento, cambio de turno y chequeo de la casilla en la que se encuentra el jugador
             Server.sendMsg("Move");
             Server.updateMove(Player.getX(), Player.getY());
             Server.sendMsg("Turn");
@@ -253,6 +255,7 @@ public class DoubleLinkedList implements Serializable {
             BoardInterfaceServer.checkPos(BoardInterfaceServer.casillas);
 
         }else{
+            //Aviso al Servidor para actualizar movimiento, cambio de turno y chequeo de la casilla en la que se encuentra el jugador
             Client.sendMsg("Move");
             Client.updateMove(Player.getX(), Player.getY());
             Client.sendMsg("Turn");
@@ -264,13 +267,14 @@ public class DoubleLinkedList implements Serializable {
     /**
      * Método que contiene la funcionalidad y el movimiento de la casilla de trampa
      *
-     * @param Player Parámetro del jugador
+     * @param Player Parámetro que pasa el Label del jugador para su actualización
+     * @param player Parámetro que define que jugador llamó al método
      */
     public static void Trap(JLabel Player, String player){
-        int move = (int)(Math.random()*3)+1;
-        boolean flag = true;
+        int move = (int)(Math.random()*3)+1; //Cantidad de casillas a moverse, de 1 a 3
         System.out.println("Trap rest: " + move);
 
+        //Devolver al jugador a la primera casilla del tablero y reduce el contador de casillas
         if(player.equals("Server")){
             if(BoardInterfaceServer.casillas - move < 0){
                 Player.setLocation(66, Player.getY());
@@ -286,80 +290,80 @@ public class DoubleLinkedList implements Serializable {
 
         }
 
-        if (Player.getY() == 107) {
+        if (Player.getY() == 107) { //Jugador en la primera fila del tablero
             int pos = 0;
             while(pos < move){
                 if(Player.getX() == 66){
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimeinto a la izquierda en la primera fila
                 pos++;
             }
             if(Player.getX() < 66){
-                Player.setLocation(66,Player.getY());
+                Player.setLocation(66,Player.getY()); //Devuelve el jugador a la casilla de inicio si este se pasa
             }
 
-        } else if(Player.getY() == 257) {
+        } else if(Player.getY() == 257) { //Jugador en la segunda fila del tablero
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 516 && pos != move) || (Player.getX() == 566 && pos != move)){
 
                     if(player.equals("Server")){
-                        Player.setLocation(Player.getX(), Player.getY()-150);
+                        Player.setLocation(Player.getX(), Player.getY()-150); //Devuelve el jugador a la primera fila
                         pos++;
                         for(int i = pos; i < move; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                            Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento a la izquierda en la primera fila
                             pos++;
                         }
                         pos++;
                         break;
 
                     }else{
-                        Player.setLocation(Player.getX()-50, Player.getY()-150);
+                        Player.setLocation(Player.getX()-50, Player.getY()-150); //Devuelve al jugador a la primera fila
                         pos++;
                         for(int i = pos; i < move; i++) {
-                            Player.setLocation(Player.getX()-150, Player.getY());
+                            Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento a la izquierda en la primera fila
                             pos++;
                         }
                         pos++;
                         break;
                     }
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento a la derecha del jugador
                 pos++;
             }
 
-        } else if (Player.getY() == 407){
+        } else if (Player.getY() == 407){ //Jugador en la tercera fila del tablero
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 66 && pos != move) || (Player.getX() == 116 && pos != move)){
-                    Player.setLocation(Player.getX(), Player.getY()-150);
+                    Player.setLocation(Player.getX(), Player.getY()-150); //Devuelve al jugador a la segunda fila del tablero
                     pos++;
                     for(int i = pos; i < move; i++) {
-                        Player.setLocation(Player.getX()+150, Player.getY());
+                        Player.setLocation(Player.getX()+150, Player.getY()); //Movimiento a la derecha en la segunda fila del tablero
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()-150, Player.getY());
+                Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento a la izquierda en la tercera fila del tablero
                 pos++;
             }
 
-        } else if (Player.getY() == 557) {
+        } else if (Player.getY() == 557) { //Jugador en la cuarta fila del tablero
             int pos = 0;
             while(pos < move){
                 if((Player.getX() == 516 && pos != move) || (Player.getX() == 556 && pos != move)){
-                    Player.setLocation(Player.getX(), Player.getY()-150);
+                    Player.setLocation(Player.getX(), Player.getY()-150); //Devuelve al jugador a la tercera fila del tablero
                     pos++;
                     for(int i = pos; i < move; i++) {
-                        Player.setLocation(Player.getX()-150, Player.getY());
+                        Player.setLocation(Player.getX()-150, Player.getY()); //Movimiento del jugador a la izquierda en la tercera fila
                         pos++;
                     }
                     pos++;
                     break;
                 }
-                Player.setLocation(Player.getX()+150, Player.getY());
+                Player.setLocation(Player.getX()+150, Player.getY()); //Moviento del jugador a la derecha en la cuarta fila
                 pos++;
             }
         }

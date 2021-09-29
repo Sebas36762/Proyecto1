@@ -16,6 +16,7 @@ import java.awt.*;
  * de casilla, para así ser detectados
  */
 public class Labels {
+    //Stack Labels
     public static JLabel Lb1;
     public static JLabel Lb2;
     public static JLabel Lb3;
@@ -122,6 +123,7 @@ public class Labels {
         Lb14.setBounds(260,518,100,100);
         Lb14.setFont(new Font("default", Font.BOLD, 20));
 
+        //Se guardan los Labels en al pila creada
         StackLabels stack = new StackLabels();
         StackLabels.push(Lb14);
         StackLabels.push(Lb13);

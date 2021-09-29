@@ -32,6 +32,8 @@ public class WaitingInterface extends JFrame {
      * @throws IOException Excepción en caso de que ocurra algún problema
      */
     public WaitingInterface() throws IOException {
+
+        //Creación y agregación de elementos a la ventana
         SBGImage = new ImageIcon("fondo.jpg");
 
         Slabel = new JLabel();
@@ -55,7 +57,7 @@ public class WaitingInterface extends JFrame {
         Swindow.setLocationRelativeTo(null);
 
         Server Srv = new Server();
-        Srv.linkS();
+        Srv.linkS(); //Inicia la conexión del servidor
         Swindow.dispose();
         LoginSInterface LgnW = new LoginSInterface(Srv);
     }

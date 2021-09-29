@@ -22,6 +22,6 @@ public class AppServer {
      * @throws IOException Excepción en caso de que ocurra algún problema
      */
     public static void main(String[] args) throws IOException {
-        WaitingInterface WtngW = new WaitingInterface();
+        WaitingInterface WtngW = new WaitingInterface(); //Lanza la ventana de espera
     }
 }

@@ -36,8 +36,8 @@ public class Client {
     public void linkC() throws IOException {
         socketCliente = new Socket("LocalHost", 7777);
         System.out.println("Client connected");
-        new ClientThread(socketCliente).start();
-        sender = new PrintWriter(socketCliente.getOutputStream(), true);
+        new ClientThread(socketCliente).start(); //Inicia el hilo del cliente
+        sender = new PrintWriter(socketCliente.getOutputStream(), true); //Crea el puente para envio de datos al servidor
     }
 
     /**

@@ -32,6 +32,8 @@ public class LoginSInterface extends JFrame {
      * Constructor que contiene los componentes y elementos de la ventana, la interfaz gráfica en sí de la misma
      */
     public LoginSInterface(Server server) {
+
+        //Creación y agregación de elementos a la ventana
         BGImage = new ImageIcon("fondo.jpg");
 
         Username = new JTextField();
@@ -79,18 +81,18 @@ public class LoginSInterface extends JFrame {
          * @param e Parámetro de eventos del ActionListener
          */
         public void actionPerformed(ActionEvent e) {
-            String Usrnm = Username.getText();
+            String Usrnm = Username.getText(); //Nombre del Servidor
             System.out.println(Usrnm);
             if (Usrnm.equals("")) {
                 JOptionPane.showMessageDialog(WindowS, "Please enter your user name");
             } else {
                 try {
-                    server.sendMsg(Usrnm);
+                    server.sendMsg(Usrnm); //Envía el nombre del servidor a cliente
                     DoubleLinkedList list = new DoubleLinkedList();
-                    String List = list.showList();
-                    Server.sendList(List);
+                    String List = list.showList(); //Guarda la lista doblemente enlazada en la variable List
+                    Server.sendList(List); //Envía la lista al cliente
                     BoardInterfaceServer brnRunnable = new BoardInterfaceServer();
-                    brnRunnable.getUsername(Usrnm);
+                    brnRunnable.getUsername(Usrnm); //Pasa el nombre del servidor al tablero
                     WindowS.dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();

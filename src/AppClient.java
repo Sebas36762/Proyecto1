@@ -24,8 +24,8 @@ public class AppClient {
      */
     public static void main(String[] args) throws IOException {
         Client Client = new Client();
-        LoginCInterface LgnCW = new LoginCInterface(Client);
-        Client.linkC();
+        LoginCInterface LgnCW = new LoginCInterface(Client); //Lanza la ventana de inicio
+        Client.linkC(); //Inicia la conexión del cliente
     }
 
 }

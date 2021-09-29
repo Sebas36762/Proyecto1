@@ -34,8 +34,8 @@ public class Server {
     public void linkS () throws IOException {
         socketServidor = new ServerSocket(7777);
         socketCliente = socketServidor.accept();
-        sender = new PrintWriter(socketCliente.getOutputStream(), true);
-        new ServerThread(socketCliente).start();
+        sender = new PrintWriter(socketCliente.getOutputStream(), true); //Puente para el envío de datos
+        new ServerThread(socketCliente).start(); //Inicia el hilo del servidor
     }
 
     /**
