@@ -12,12 +12,12 @@ import java.io.IOException;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: BoardInterfaceClient
  * @version 2.4
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene los diferentes componentes que conforman la ventana del tablero, así mismo posee
  * la funcionalidad del movimiento de acuerdo a los dados desde el accionar del botón
@@ -478,11 +478,11 @@ public class BoardInterfaceClient extends JFrame {
 
     /**
      * Instituto Tecnológico de Costa Rica
-     * Área de Ingeniería en Computadores
+     * Area de Ingeniería en Computadores
      *
      * Sub-clase: Action (Recreación de action Listener)
      * @version 1.0
-     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
      *
      * Descripción: Esta sub-clase contiene el método que permite la funcionalidad del botón en relación con el movimiento
      */

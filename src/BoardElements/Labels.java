@@ -5,12 +5,12 @@ import java.awt.*;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: Labels
  * @version 1.0
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene los labels utilizados en el tablero, labels a los que se les asigna un valor del tipo
  * de casilla, para así ser detectados

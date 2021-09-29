@@ -10,12 +10,12 @@ import java.util.Arrays;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: LoginSInterface
  * @version 1.0
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene los componentes de la interfaz gráfica del login de los jugadores y contiene la subclase
  * del funcionamiento del botón
@@ -30,6 +30,8 @@ public class LoginSInterface extends JFrame {
 
     /**
      * Constructor que contiene los componentes y elementos de la ventana, la interfaz gráfica en sí de la misma
+     *
+     * @param server Parámetro de la instancia del Server
      */
     public LoginSInterface(Server server) {
 
@@ -64,11 +66,11 @@ public class LoginSInterface extends JFrame {
 
     /**
      * Instituto Tecnológico de Costa Rica
-     * Área de Ingeniería en Computadores
+     * Area de Ingeniería en Computadores
      *
      * Sub-clase: Action (Recreación de action Listener)
      * @version 1.0
-     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
      *
      * Descripción: Esta sub-clase contiene el método que le da el funcionamiento al botón del login
      */

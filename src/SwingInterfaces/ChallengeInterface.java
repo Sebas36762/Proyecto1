@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: ChallengeInterface
  * @version 1.2
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene los diferentes componentes que conforman la ventana de la casilla de reto
  */
@@ -31,6 +31,9 @@ public class ChallengeInterface extends JFrame {
     /**
      * Constructor que contiene los componentes y elementos de la ventana de la casilla de reto, además de su interfaz gráfica
      * en sí
+     *
+     * @param player Parámetro para realizar el movimiento del jugador
+     * @param Player Parámetro para indetificar si se es cliente o servidor
      */
     public ChallengeInterface (String Player, JLabel player) {
 
@@ -114,11 +117,11 @@ public class ChallengeInterface extends JFrame {
 
     /**
      * Instituto Tecnológico de Costa Rica
-     * Área de Ingeniería en Computadores
+     * Area de Ingeniería en Computadores
      *
      * Sub-clase: Action (Recreación de action Listener)
      * @version 1.0
-     * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+     * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
      *
      * Descripción: Esta sub-clase contiene el método que permite realizar el envío y comprobación del resultado de la
      * operación matemática, por medio del accionar del botón

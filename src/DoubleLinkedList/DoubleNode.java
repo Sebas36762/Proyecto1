@@ -3,12 +3,12 @@ import java.io.Serializable;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: DoubleNode
  * @version 1.0
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene algunos de los métodos que se utilizan en la lista doblemente enlazada
  */

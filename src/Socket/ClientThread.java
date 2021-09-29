@@ -15,7 +15,7 @@ import java.net.Socket;
  * Lenguaje: Java
  * Clase: ClientThread
  * @version 1.2
- * @author Byron Mata Fuentes, Gustavo Alvarado Aburto & Sebastián Chaves Ruiz
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripcion:Esta Clase contiene el constructor para guardar el socket y el movimiento del juegador
  */

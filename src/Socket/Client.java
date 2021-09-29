@@ -5,12 +5,12 @@ import java.io.IOException;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: Client
  * @version 1.2
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene el constructor del socket de cliente y establece sus valores para realizar la conexión,
  * además contiene el hilo que mantiene a en escucha a estos a traves de la conexión que se estableció

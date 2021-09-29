@@ -4,12 +4,12 @@ import SwingInterfaces.WaitingInterface;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: AppServidor
  * @version 1.0
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Clase que contiene el método principal para la ejecución de la aplicación del servidor
  */

@@ -9,12 +9,12 @@ import java.util.*;
 
 /**
  * Instituto Tecnológico de Costa Rica
- * Área de Ingeniería en Computadores
+ * Area de Ingeniería en Computadores
  *
  * Lenguaje: Java
  * Clase: DoubleLinkedList
  * @version 3.0
- * @author Byron Mata, Gustavo Alvarado & Sebastián Chaves
+ * @author Byron Mata, Gustavo Alvarado y Sebastián Chaves
  *
  * Descripción: Esta clase contiene algunos de los métodos que se utilizan en la lista doblemente enlazada, principalmente
  * en los movimientos y los casos de las casillas
